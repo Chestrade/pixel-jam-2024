@@ -8,14 +8,12 @@ var currentMarkerIndex = -1
 var isReachingTarget : bool = false
 
 var target_node = null
-var home_pos = Vector2.ZERO
 
 enum STATE {WANDERING, CHASE}
 var currentState : STATE
 
 func _ready() -> void:
 	SetState(STATE.WANDERING)
-	home_pos = self.global_position
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
 
