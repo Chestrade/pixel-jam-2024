@@ -1,8 +1,11 @@
 extends CharacterBody2D
 @export_category("Movement")
-@export var speed = 300
+@export var wanderSpeed : float = 300
+@export var chaseSpeed : float = 400
 @export var nav_agent : NavigationAgent2D
 @export var markers : Array[Marker2D] = []
+
+var speed : float = 300
 
 @export_category("Health")
 @export var  healthColors : Array[Color] = []
@@ -37,6 +40,9 @@ func HealthLightColor() -> void:
 	elif health <25:
 		headLight.set_color(healthColors[3]) 
 
+func takeDammage(dammage : int):
+	health -= dammage
+
 func StateUpdate() -> void:
 	match currentState:
 		STATE.WANDERING:
@@ -56,12 +62,18 @@ func StateUpdate() -> void:
 	
 	if nav_agent.is_navigation_finished(): #if the nav agent reached its target
 		return
+	
 	var axis : Vector2 = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = axis * speed
 	move_and_slide()
 
 func SetState(newState : STATE) -> void:
 	currentState = newState
+	match currentState:
+		STATE.WANDERING:
+			speed = wanderSpeed
+		STATE.CHASE:
+			speed = chaseSpeed
 
 func recalc_path() -> void:
 	if target_node and currentState == STATE.CHASE:
