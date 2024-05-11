@@ -33,6 +33,7 @@ health = 99.92
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(4.30062, 4.0345)
 energy = 8.32
+shadow_enabled = true
 texture = SubResource("GradientTexture2D_uqucl")
 
 [node name="Sprite" type="Sprite2D" parent="."]
