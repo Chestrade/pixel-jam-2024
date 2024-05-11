@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4wi47flvgt1v"]
+
+[ext_resource type="Script" path="res://Scripts/player_blowfish.gd" id="1_654n7"]
+[ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/angler.png" id="2_kml3h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyglf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kml3h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wixs"]
+radius = 10.0499
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 3
+position = Vector2(-1, 0)
+script = ExtResource("1_654n7")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wyglf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_5wixs")
