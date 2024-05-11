@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 
+@export var SWIM_SPEED: float = 300.0
+@export var DASH_SPEED: float = 1000.0
 @export var inertia: float = 0.95
-const SPEED = 300.0
+@export var chonkiness: float = 1
 
 var screen_size
 var direction: Vector2
@@ -16,11 +18,23 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	get_input()
 	
-	# If no movement input, slowly decrease velocity
-	if !is_move_input_received:
-		velocity = velocity * inertia
-	else:
-		velocity = direction.normalized() * SPEED
+	# Dash on player input
+	if Input.is_action_pressed("dash") and $DashCooldown.is_stopped():
+		$DashCooldown.start()
+		$AnimatedSprite2D.scale.x = 1.2
+		$AnimatedSprite2D.scale.y = 0.8
+		if $AnimatedSprite2D.is_flipped_h():
+			velocity.x = -DASH_SPEED
+		else:
+			velocity.x = DASH_SPEED
+	# Walk if not dashing
+	elif velocity.length() <= SWIM_SPEED:
+		$AnimatedSprite2D.scale.x = 1
+		$AnimatedSprite2D.scale.y = 1
+		velocity = SWIM_SPEED * chonkiness * direction.normalized()
+	
+	# Slowly decrease velocity
+	velocity = velocity * inertia
 	
 	if is_sinking:
 		velocity.y = gravity * delta
@@ -65,9 +79,11 @@ func get_input():
 	   $InflationCooldown.is_stopped():
 		$AnimatedSprite2D.animation = "chonked"
 		$InflationCooldown.start()
+		chonkiness = 0.5
 	elif Input.is_action_pressed("inflate") and $InflationCooldown.is_stopped():
 		$AnimatedSprite2D.animation = "default"
 		$InflationCooldown.start()
+		chonkiness = 1
 
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true

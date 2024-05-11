@@ -72,12 +72,10 @@ gizmo_extents = 1.0
 
 [node name="Obstacle" type="Sprite2D" parent="."]
 position = Vector2(219, 319)
-scale = Vector2(1, 1)
 texture = ExtResource("3_poqp6")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Obstacle"]
 position = Vector2(31, -57)
-scale = Vector2(1, 1)
 occluder = SubResource("OccluderPolygon2D_d7web")
 sdf_collision = false
 
