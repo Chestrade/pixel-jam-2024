@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck4tc0l1gf463"]
+[gd_scene load_steps=7 format=3 uid="uid://ck4tc0l1gf463"]
 
 [ext_resource type="Script" path="res://Scripts/player_blowfish.gd" id="1_654n7"]
 [ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/angler.png" id="2_kml3h"]
+[ext_resource type="Texture2D" uid="uid://ukumuf5r04xv" path="res://Art/puffed_up_2.png" id="2_nuj23"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyglf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nuj23")
+}],
+"loop": true,
+"name": &"chonked",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_kml3h")
@@ -38,6 +47,10 @@ shape = SubResource("CircleShape2D_5wixs")
 
 [node name="SinkTimer" type="Timer" parent="."]
 wait_time = 0.25
+one_shot = true
+
+[node name="InflationCooldown" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]

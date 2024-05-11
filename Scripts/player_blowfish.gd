@@ -59,6 +59,15 @@ func get_input():
 		$SinkTimer.stop()
 		is_sinking = false
 		is_move_input_received = true
+	
+	# Inflate on player input
+	if Input.is_action_pressed("inflate") and $AnimatedSprite2D.animation == "default" and \
+	   $InflationCooldown.is_stopped():
+		$AnimatedSprite2D.animation = "chonked"
+		$InflationCooldown.start()
+	elif Input.is_action_pressed("inflate") and $InflationCooldown.is_stopped():
+		$AnimatedSprite2D.animation = "default"
+		$InflationCooldown.start()
 
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true
