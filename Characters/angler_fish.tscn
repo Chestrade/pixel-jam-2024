@@ -1,49 +1,59 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj1nptspt5q4w"]
+[gd_scene load_steps=6 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
-[ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/angler.png" id="2_1aspp"]
+[ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_r77o7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k7fob"]
-radius = 86.0233
+[sub_resource type="CircleShape2D" id="CircleShape2D_oq4ku"]
 
-[sub_resource type="GDScript" id="GDScript_a6226"]
-script/source = "extends Node
+[sub_resource type="CircleShape2D" id="CircleShape2D_xillh"]
+radius = 30.0167
 
-var currentState : State
-var states : Dictionary = {}
+[sub_resource type="CircleShape2D" id="CircleShape2D_igk2u"]
+radius = 106.019
 
-func _ready() ->void:
-	for child in get_children():
-		if child is State:
-			states[child.name] = child
-			child.transitioned.connect(on_child_transition)
-	
-func _process(delta):
-	if currentState:
-		currentState.Update(delta)
-	
-	
-func _physics_process(delta):
-	if currentState:
-		currentState.Update(delta)
-
-func on_child_transition(state, new_state_name):
-	pass
-"
-
-[node name="Angler Fish" type="CharacterBody2D"]
+[node name="Angler Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_kr2uu")
+nav_agent = NodePath("Navigation/NavigationAgent2D")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_1aspp")
+scale = Vector2(0.151858, 0.151858)
+texture = ExtResource("1_r77o7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oq4ku")
 
 [node name="AnglerFishAnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_k7fob")
+[node name="Navigation" type="Node2D" parent="."]
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+debug_enabled = true
 
-[node name="StateMachine" type="Node" parent="."]
-script = SubResource("GDScript_a6226")
+[node name="Timer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Agro Range" type="Node2D" parent="."]
+
+[node name="AgroRange" type="Area2D" parent="Agro Range"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/AgroRange"]
+shape = SubResource("CircleShape2D_xillh")
+debug_color = Color(1, 0.00518643, 0.0615661, 0.42)
+
+[node name="DeAgro Range" type="Area2D" parent="Agro Range"]
+scale = Vector2(1.02113, 1.07926)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/DeAgro Range"]
+shape = SubResource("CircleShape2D_igk2u")
+debug_color = Color(0.511034, 0.608367, 1, 0.42)
+
+[connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Agro Range/AgroRange" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Agro Range/DeAgro Range" to="." method="_on_area_2d_area_exited"]
