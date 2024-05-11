@@ -22,11 +22,13 @@ radius = 30.0167
 [sub_resource type="CircleShape2D" id="CircleShape2D_igk2u"]
 radius = 106.019
 
-[node name="Angler Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+[node name="Angler Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "headLight")]
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_kr2uu")
+speed = null
 nav_agent = NodePath("Navigation/NavigationAgent2D")
+headLight = NodePath("PointLight2D")
 healthColors = Array[Color]([Color(0, 0.789679, 0.234643, 1), Color(1, 0.966667, 0, 1), Color(0.94, 0.548333, 0, 1), Color(1, 0, 0, 1)])
 health = 99.92
 
