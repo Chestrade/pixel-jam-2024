@@ -21,5 +21,22 @@ position = Vector2(318, 271)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_oxeyj")
 
-[node name="Angler Fish" parent="." instance=ExtResource("1_tmi8k")]
+[node name="Angler Fish" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("1_tmi8k")]
 position = Vector2(660, 352)
+markers = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(158, 106)
+scale = Vector2(-30.348, -53.7946)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(568, 117)
+scale = Vector2(-30.348, -53.7946)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(946, 381)
+scale = Vector2(-30.348, -53.7946)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(309, 515)
+scale = Vector2(-30.348, -53.7946)
