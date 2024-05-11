@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj1nptspt5q4w"]
+[gd_scene load_steps=4 format=3 uid="uid://cj1nptspt5q4w"]
 
+[ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_r77o7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oy8s3"]
-radius = 80.0062
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7fob"]
+radius = 86.0233
 
-[node name="Angler Fish" type="Node2D"]
+[node name="Angler Fish" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_kr2uu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_r77o7")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k7fob")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_oy8s3")
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
