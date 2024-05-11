@@ -22,9 +22,10 @@ color = Color(0.0470588, 0.0470588, 0.12549, 0.8)
 
 [node name="Angler Fish" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("1_tmi8k")]
 position = Vector2(660, 352)
+wall_min_slide_angle = 3.14159
 speed = 150
 markers = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")]
-health = 67
+health = 22.223
 
 [node name="Player" parent="." instance=ExtResource("1_0dfh6")]
 visibility_layer = 2

@@ -5,10 +5,10 @@ extends CharacterBody2D
 @export var markers : Array[Marker2D] = []
 
 @export_category("Health")
-@export var headLight : Light2D
 @export var  healthColors : Array[Color] = []
-@export var health : int = 100
+@export_range(0, 100) var health
 
+@onready var headLight : PointLight2D = $PointLight2D
 var currentMarkerIndex = -1
 var isReachingTarget : bool = false
 
@@ -18,22 +18,24 @@ enum STATE {WANDERING, CHASE}
 var currentState : STATE
 
 func _ready() -> void:
+	health = 100
 	SetState(STATE.WANDERING)
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
 
 func _process(delta: float) -> void:
 	StateUpdate()
+	HealthLightColor()
 
 func HealthLightColor() -> void:
 	if health >= 75:
-		headLight.color = healthColors[0]
+		headLight.set_color(healthColors[0]) 
 	elif health <75 and health >= 50:
-		headLight.color = healthColors[1]
+		headLight.set_color(healthColors[1])
 	elif health <50 and health >=25:
-		headLight.color = healthColors[2]
+		headLight.set_color(healthColors[2]) 
 	elif health <25:
-		headLight.color = healthColors[3]
+		headLight.set_color(healthColors[3]) 
 
 func StateUpdate() -> void:
 	match currentState:
