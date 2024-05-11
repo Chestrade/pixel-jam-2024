@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cj1nptspt5q4w" path="res://Characters/angler_fish.tscn" id="1_tmi8k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oxeyj"]
-vertices = PackedVector2Array(40, 281, 17, 15, 534, 28, 552, 629, 12, 637, 1116, 21, 1134, 637)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 0), PackedInt32Array(5, 6, 3, 2)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(7, 5, 30, 281, 2, 648, 552, 639, 1145, 648, 1126, 11, 534, 18)])
+vertices = PackedVector2Array(552, 629, 12, 637, 33, 297, 540, 4, 1116, 20, 1134, 637, 33, 295, 17, 14)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(4, 5, 0), PackedInt32Array(3, 2, 6), PackedInt32Array(3, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(7, 5, 23, 296, 2, 648, 552, 639, 1145, 648, 1126, 11, 540, -6)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="AnglerFishGym" type="Node2D"]
@@ -19,6 +19,7 @@ visibility_layer = 2
 position = Vector2(318, 271)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(7, 19)
 navigation_polygon = SubResource("NavigationPolygon_oxeyj")
 
 [node name="Angler Fish" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("1_tmi8k")]
@@ -28,15 +29,19 @@ markers = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marke
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(158, 106)
 scale = Vector2(-30.348, -53.7946)
+gizmo_extents = 1.0
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(568, 117)
+position = Vector2(585, 146)
 scale = Vector2(-30.348, -53.7946)
+gizmo_extents = 1.0
 
 [node name="Marker2D3" type="Marker2D" parent="."]
 position = Vector2(946, 381)
 scale = Vector2(-30.348, -53.7946)
+gizmo_extents = 1.0
 
 [node name="Marker2D4" type="Marker2D" parent="."]
 position = Vector2(309, 515)
 scale = Vector2(-30.348, -53.7946)
+gizmo_extents = 1.0
