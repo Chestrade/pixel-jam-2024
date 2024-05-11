@@ -37,6 +37,7 @@ position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_5wixs")
 
 [node name="SinkTimer" type="Timer" parent="."]
+wait_time = 0.25
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]

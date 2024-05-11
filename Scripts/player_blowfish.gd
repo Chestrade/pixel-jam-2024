@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
 
+@export var inertia: float = 0.95
 const SPEED = 300.0
 
 var screen_size
 var direction: Vector2
-var is_move_input_received: bool = false
+var is_move_input_received: bool = true
 var is_sinking: bool = false
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-var inertia: float = 0.95
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -16,13 +16,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	get_input()
 	
-	if is_move_input_received:
+	# If no movement input, slowly decrease velocity
+	if !is_move_input_received:
 		velocity = velocity * inertia
 	else:
 		velocity = direction.normalized() * SPEED
-	
-	print("Velocity: ", velocity)
-	print("Direction: ", direction)
 	
 	if is_sinking:
 		velocity.y = gravity * delta
@@ -48,19 +46,19 @@ func get_input():
 	if Input.is_action_pressed("swim_up"):
 		direction.y = -1
 	
-	# If player is not moving, slowly sink down
+	# If player is not moving
 	if !Input.is_action_pressed("swim_up") and \
 	   !Input.is_action_pressed("swim_down") and \
 	   !Input.is_action_pressed("swim_left") and \
 	   !Input.is_action_pressed("swim_right"):
-		is_move_input_received = true
+		is_move_input_received = false
 		
 		if $SinkTimer.is_stopped():
 			$SinkTimer.start()
 	else:
 		$SinkTimer.stop()
 		is_sinking = false
-		is_move_input_received = false
+		is_move_input_received = true
 
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true
