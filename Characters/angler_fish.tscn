@@ -1,19 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj1nptspt5q4w"]
+[gd_scene load_steps=5 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
-[ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_r77o7"]
+[ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/angler.png" id="2_1aspp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7fob"]
 radius = 86.0233
+
+[sub_resource type="GDScript" id="GDScript_a6226"]
+script/source = "extends Node
+
+var currentState : State
+var states : Dictionary = {}
+
+func _ready() ->void:
+	for child in get_children():
+		if child is State:
+			states[child.name] = child
+			child.transitioned.connect(on_child_transition)
+	
+func _process(delta):
+	if currentState:
+		currentState.Update(delta)
+	
+	
+func _physics_process(delta):
+	if currentState:
+		currentState.Update(delta)
+
+func on_child_transition(state, new_state_name):
+	pass
+"
 
 [node name="Angler Fish" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_kr2uu")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_r77o7")
+texture = ExtResource("2_1aspp")
+
+[node name="AnglerFishAnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k7fob")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = SubResource("GDScript_a6226")

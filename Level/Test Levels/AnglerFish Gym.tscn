@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://b3ijs2y7l3vjg"]
+[gd_scene load_steps=2 format=3 uid="uid://b3ijs2y7l3vjg"]
+
+[ext_resource type="PackedScene" uid="uid://cj1nptspt5q4w" path="res://Characters/angler_fish.tscn" id="1_tmi8k"]
 
 [node name="AnglerFishGym" type="Node2D"]
+
+[node name="Angler Fish" parent="." instance=ExtResource("1_tmi8k")]
