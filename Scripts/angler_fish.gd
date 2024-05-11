@@ -1,9 +1,14 @@
 extends CharacterBody2D
-
-@export var speed = 5000
+@export_category("Movement")
+@export var speed = 300
 @export var nav_agent : NavigationAgent2D
-
 @export var markers : Array[Marker2D] = []
+
+@export_category("Health")
+@export var headLight : Light2D
+@export var  healthColors : Array[Color] = []
+@export var health : int = 100
+
 var currentMarkerIndex = -1
 var isReachingTarget : bool = false
 
@@ -17,7 +22,20 @@ func _ready() -> void:
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
+	StateUpdate()
+
+func HealthLightColor() -> void:
+	if health >= 75:
+		headLight.color = healthColors[0]
+	elif health <75 and health >= 50:
+		headLight.color = healthColors[1]
+	elif health <50 and health >=25:
+		headLight.color = healthColors[2]
+	elif health <25:
+		headLight.color = healthColors[3]
+
+func StateUpdate() -> void:
 	match currentState:
 		STATE.WANDERING:
 			if isReachingTarget:
@@ -37,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	if nav_agent.is_navigation_finished(): #if the nav agent reached its target
 		return
 	var axis : Vector2 = to_local(nav_agent.get_next_path_position()).normalized()
-	velocity = axis * speed * delta
+	velocity = axis * speed
 	move_and_slide()
 
 func SetState(newState : STATE) -> void:
@@ -52,11 +70,9 @@ func recalc_path() -> void:
 func _on_timer_timeout() -> void:
 	recalc_path()
 
-
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	SetState(STATE.CHASE)
 	target_node = area.owner
-
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.owner == target_node:

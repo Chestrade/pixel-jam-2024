@@ -14,17 +14,26 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 326)
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.8252, 16.1165)
+color = Color(0.0470588, 0.0470588, 0.12549, 0.8)
+
+[node name="Angler Fish" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("1_tmi8k")]
+position = Vector2(660, 352)
+speed = 150
+markers = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")]
+health = 67
+
 [node name="Player" parent="." instance=ExtResource("1_0dfh6")]
 visibility_layer = 2
 position = Vector2(318, 271)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(7, 19)
 navigation_polygon = SubResource("NavigationPolygon_oxeyj")
-
-[node name="Angler Fish" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("1_tmi8k")]
-position = Vector2(660, 352)
-markers = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3"), NodePath("../Marker2D4")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(158, 106)
