@@ -35,7 +35,7 @@ func _ready() -> void:
 	maxFlickerAmount = 10
 	lightTimer.start()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	StateUpdate()
 	
 	# Temporary shit for testing
@@ -119,3 +119,8 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func _on_light_timer_timeout() -> void:
 	var flicker = randf_range(minFlickerAmount, maxFlickerAmount)
 	headLight.energy = flicker
+
+
+func _on_trash_pickup_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Trash"):
+		print("fish ate trash")

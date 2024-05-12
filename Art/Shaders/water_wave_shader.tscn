@@ -3,8 +3,12 @@
 [ext_resource type="Shader" path="res://Scripts/water.gdshader" id="1_g4ilq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qptps"]
-frequency = 0.0025
+noise_type = 5
+frequency = 0.0171
 offset = Vector3(-74.07, 0, 0)
+fractal_type = 2
+fractal_lacunarity = 3.305
+fractal_weighted_strength = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_23x07"]
 seamless_blend_skirt = 0.0
@@ -12,10 +16,10 @@ noise = SubResource("FastNoiseLite_qptps")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fakts"]
 shader = ExtResource("1_g4ilq")
-shader_parameter/strength = 5.0
+shader_parameter/strength = 3.3
 shader_parameter/uv_scaling = 1.0
 shader_parameter/movement_direction = Vector2(1, 0)
-shader_parameter/movement_speed = 0.07
+shader_parameter/movement_speed = 0.12
 shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_23x07")
 
 [node name="Water Wave Shader" type="CanvasLayer"]
