@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://0x0ecpbwempp"]
 
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_7nm41"]
-[ext_resource type="Shader" path="res://Scripts/water.gdshader" id="1_olqkq"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/water.gdshader" id="1_olqkq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2k1gv"]
 frequency = 0.0025

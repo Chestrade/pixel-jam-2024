@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dau8g3h2llrw0"]
 
-[ext_resource type="Shader" path="res://Scripts/water.gdshader" id="1_g4ilq"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/water.gdshader" id="1_g4ilq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qptps"]
 noise_type = 5
