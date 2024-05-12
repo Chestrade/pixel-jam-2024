@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3ijs2y7l3vjg"]
+
+[ext_resource type="PackedScene" uid="uid://cj1nptspt5q4w" path="res://Characters/angler_fish.tscn" id="1_61sog"]
+[ext_resource type="PackedScene" uid="uid://dau8g3h2llrw0" path="res://Art/Shaders/water_wave_shader.tscn" id="1_r3ymx"]
+[ext_resource type="PackedScene" uid="uid://ck4tc0l1gf463" path="res://Characters/player_blowfish.tscn" id="2_adlbc"]
+[ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="3_lnh6q"]
+[ext_resource type="PackedScene" uid="uid://cexfsplmdf100" path="res://Environement/trash_01.tscn" id="4_v6sld"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_oxeyj"]
+vertices = PackedVector2Array(540, 4, 1116, 20, 1134, 637, 552, 629, 289, 373, 287, 225, 12, 637, 136, 372, 33, 297, 139, 224, 33, 295, 17, 14)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(4, 3, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(9, 8, 10), PackedInt32Array(9, 10, 11), PackedInt32Array(9, 11, 0, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(7, 5, 23, 296, 2, 648, 552, 639, 1145, 648, 1126, 11, 540, -6), PackedVector2Array(149, 234, 277, 235, 279, 363, 146, 362)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_d7web"]
+polygon = PackedVector2Array(-91, 118, 28, 119, 27, 0, -91, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7d5yn"]
+size = Vector2(122, 120)
+
+[node name="AnglerFishGym" type="Node2D"]
+
+[node name="Water Wave Shader" parent="." instance=ExtResource("1_r3ymx")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(7, 19)
+navigation_polygon = SubResource("NavigationPolygon_oxeyj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -9.0
+offset_top = -79.0
+offset_right = 31.0
+offset_bottom = -39.0
+scale = Vector2(30.4972, 18.4489)
+color = Color(0.0470588, 0.0470588, 0.12549, 0.8)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 326)
+
+[node name="Angler Fish" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("1_61sog")]
+position = Vector2(581, 428)
+wall_min_slide_angle = 3.14159
+markers = [NodePath("../Markers/Marker2D"), NodePath("../Markers/Marker2D2"), NodePath("../Markers/Marker2D3"), NodePath("../Markers/Marker2D4")]
+health = 100.0
+
+[node name="Player" parent="." instance=ExtResource("2_adlbc")]
+visibility_layer = 2
+position = Vector2(318, 271)
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+position = Vector2(158, 106)
+rotation = 3.14159
+scale = Vector2(30.348, 53.7946)
+gizmo_extents = 1.0
+
+[node name="Marker2D2" type="Marker2D" parent="Markers"]
+position = Vector2(585, 146)
+rotation = 3.14159
+scale = Vector2(30.348, 53.7946)
+gizmo_extents = 1.0
+
+[node name="Marker2D3" type="Marker2D" parent="Markers"]
+position = Vector2(946, 381)
+rotation = 3.14159
+scale = Vector2(30.348, 53.7946)
+gizmo_extents = 1.0
+
+[node name="Marker2D4" type="Marker2D" parent="Markers"]
+position = Vector2(309, 515)
+rotation = 3.14159
+scale = Vector2(30.348, 53.7946)
+gizmo_extents = 1.0
+
+[node name="Obstacle" type="Sprite2D" parent="."]
+position = Vector2(219, 319)
+texture = ExtResource("3_lnh6q")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Obstacle"]
+position = Vector2(31, -57)
+occluder = SubResource("OccluderPolygon2D_d7web")
+sdf_collision = false
+
+[node name="Area2D" type="Area2D" parent="Obstacle"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle/Area2D"]
+shape = SubResource("RectangleShape2D_7d5yn")
+
+[node name="trash_01" parent="." instance=ExtResource("4_v6sld")]
+position = Vector2(417, 289)

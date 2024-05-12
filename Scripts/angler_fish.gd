@@ -20,8 +20,9 @@ var currentMarkerIndex = -1
 var isReachingTarget : bool = false
 
 var target_node = null
+var trashTarget = null
 
-enum STATE {WANDERING, CHASE}
+enum STATE {WANDERING, CHASE, EAT}
 var currentState : STATE
 
 func _ready() -> void:
@@ -80,6 +81,9 @@ func StateUpdate() -> void:
 					
 		STATE.CHASE:
 			nav_agent.target_position = target_node.global_position
+		STATE.EAT:
+			pass
+			#nav_agent.target_position = trashTarget.global_position
 	
 	if nav_agent.is_navigation_finished(): #if the nav agent reached its target
 		return
@@ -95,6 +99,8 @@ func SetState(newState : STATE) -> void:
 			speed = wanderSpeed
 		STATE.CHASE:
 			speed = chaseSpeed
+		STATE.EAT:
+			speed = 10
 
 func recalc_path() -> void:
 	if target_node and currentState == STATE.CHASE:
@@ -123,4 +129,6 @@ func _on_light_timer_timeout() -> void:
 
 func _on_trash_pickup_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Trash"):
-		print("fish ate trash")
+		print("Angler fish ate some trash.")
+		#trashTarget = area.node
+		#SetState(STATE.EAT)

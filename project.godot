@@ -23,11 +23,12 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://Art/": "pink",
-"res://Characters/": "blue",
+"res://Audio/": "orange",
+"res://Characters/": "yellow",
 "res://Environement/": "green",
 "res://Level/": "green",
-"res://Scenes/": "purple",
-"res://Scripts/": "yellow"
+"res://Scenes/": "blue",
+"res://Scripts/": "purple"
 }
 
 [input]
