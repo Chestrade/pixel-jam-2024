@@ -86,4 +86,4 @@ texture = SubResource("GradientTexture2D_77nwg")
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_xw73e")
 
-[connection signal="body_entered" from="Pickup Area" to="." method="_on_pickup_area_body_entered"]
+[connection signal="area_entered" from="Pickup Area" to="." method="_on_pickup_area_area_entered"]
