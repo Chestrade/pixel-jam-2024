@@ -1,9 +1,76 @@
-[gd_scene load_steps=2 format=3 uid="uid://cexfsplmdf100"]
+[gd_scene load_steps=11 format=3 uid="uid://cexfsplmdf100"]
 
 [ext_resource type="Texture2D" uid="uid://bq7tij5akqa6d" path="res://Art/Trash/trash01.png" id="1_petr1"]
 
+[sub_resource type="Gradient" id="Gradient_boiom"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.389105, 0.689956)
+colors = PackedColorArray(0, 0, 0, 0.580392, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_277mt"]
+gradient = SubResource("Gradient_boiom")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_1y2tt"]
+offsets = PackedFloat32Array(0, 0.509749, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o02r0"]
+gradient = SubResource("Gradient_1y2tt")
+
+[sub_resource type="Curve" id="Curve_qbw5x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.581395, 0.670804), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fyarn"]
+curve = SubResource("Curve_qbw5x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bbip1"]
+lifetime_randomness = 0.35
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -3.125, 0)
+emission_shape = 1
+emission_sphere_radius = 6.56
+direction = Vector3(0, -10, 0)
+spread = 63.028
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_curve = SubResource("CurveTexture_fyarn")
+color = Color(0.745098, 1, 0.47451, 1)
+color_ramp = SubResource("GradientTexture1D_o02r0")
+turbulence_noise_strength = 1.85
+turbulence_noise_speed_random = 0.0
+
+[sub_resource type="Gradient" id="Gradient_ftcna"]
+offsets = PackedFloat32Array(0, 0.805627)
+colors = PackedColorArray(0, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_77nwg"]
+gradient = SubResource("Gradient_ftcna")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="trash_01" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.09375, 0.0234375)
+texture = SubResource("GradientTexture2D_277mt")
+
+[node name="Rock" type="Sprite2D" parent="."]
 position = Vector2(0, -3)
 texture = ExtResource("1_petr1")
+
+[node name="RadioActive Particles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -1)
+amount = 25
+amount_ratio = 0.4888
+process_material = SubResource("ParticleProcessMaterial_bbip1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-5.96046e-08, -2.5)
+scale = Vector2(0.125, 0.109375)
+texture = SubResource("GradientTexture2D_77nwg")
