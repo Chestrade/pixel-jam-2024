@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnf3ds1is5xfd"]
+[gd_scene load_steps=6 format=3 uid="uid://bnf3ds1is5xfd"]
 
 [ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_ow5dx"]
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_wiwml"]
@@ -6,6 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgagi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6s63a"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sa1ag"]
+polygon = PackedVector2Array(-8, -8, -9, -7, -9, 7, -8, 8, 8, 8, 9, 7, 9, -7, 8, -8)
 
 [node name="Projectile" type="CharacterBody2D" groups=["Projectile"]]
 script = ExtResource("1_ow5dx")
@@ -26,6 +29,9 @@ shape = SubResource("CircleShape2D_6s63a")
 [node name="Life" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_sa1ag")
 
 [connection signal="body_entered" from="Destruction Area" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Life" to="." method="_on_life_timeout"]
