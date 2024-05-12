@@ -49,7 +49,7 @@ func StateUpdate() -> void:
 			if isReachingTarget:
 				if nav_agent.is_navigation_finished():
 					isReachingTarget = false
-					currentMarkerIndex = (currentMarkerIndex + 1) % markers.size()
+					currentMarkerIndex = randi_range(0,markers.size() -1)
 					nav_agent.target_position = markers[currentMarkerIndex].global_position
 					
 			else:
