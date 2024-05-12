@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxptw8dn1tvy7"]
+
+[ext_resource type="PackedScene" uid="uid://ck4tc0l1gf463" path="res://Characters/player_blowfish.tscn" id="1_j12ho"]
+[ext_resource type="PackedScene" uid="uid://b6tb23xiiu2sq" path="res://Characters/wall_plant.tscn" id="2_rtis6"]
+
+[node name="WallPlantGym" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_j12ho")]
+position = Vector2(213, 283)
+
+[node name="Wall Plant" parent="." instance=ExtResource("2_rtis6")]
+position = Vector2(546, 567)
