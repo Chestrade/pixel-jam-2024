@@ -6,15 +6,21 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbyml"]
 radius = 169.003
 
-[node name="Wall Plant" type="Node2D"]
+[node name="Wall Plant" type="Node2D" node_paths=PackedStringArray("projectileSpawnPosition")]
 script = ExtResource("1_rslq7")
+projectileSpawnPosition = NodePath("Projectile Spawn position")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_ejaxc")
 
-[node name="Player Detection Area" type="Area2D" parent="."]
+[node name="Projectile Spawn position" type="Marker2D" parent="."]
+position = Vector2(0, -70.815)
+gizmo_extents = 20.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detection Area"]
+[node name="Player Detection Area" type="Area2D" parent="." groups=["Detection Area"]]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detection Area" groups=["Detection Area"]]
 position = Vector2(0, -100)
 shape = SubResource("CircleShape2D_pbyml")
 debug_color = Color(0.621013, 0.527946, 0.228844, 0.42)

@@ -10,6 +10,18 @@ func _ready() -> void:
 	global_position = spawnPosition
 	global_rotation = spawnRotation
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = Vector2(0, -speed).rotated(dir)
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Detection Area"):
+		return
+	else:
+		print(body.name)
+		queue_free()
+
+
+func _on_life_timeout() -> void:
+	queue_free()
