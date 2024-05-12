@@ -19,7 +19,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Detection Area"):
 		return
 	else:
-		print(body.name, " was hit")
+		if body.name == "Player":
+			body.takeDamage(25)
+		# print(body.name, " was hit")
 		queue_free()
 
 func _on_life_timeout() -> void:

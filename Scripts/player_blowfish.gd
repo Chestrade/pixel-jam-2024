@@ -15,6 +15,8 @@ var is_move_input_received: bool = true
 var is_sinking: bool = false
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var health : int = 100
+
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 
@@ -92,6 +94,13 @@ func get_input():
 		$InflationCooldown.start()
 		chonkiness = 1
 		on_spikes_retracted.emit()
+
+func takeDamage(damage : int) -> void:
+	health -= damage
+	# print("Player health = " + str(health))
+	if health <= 0:
+		health = 0
+		# Load Game Over Screen
 
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true
