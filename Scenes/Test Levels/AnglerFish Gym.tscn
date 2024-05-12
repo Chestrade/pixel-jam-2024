@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3ijs2y7l3vjg"]
+[gd_scene load_steps=9 format=3 uid="uid://b3ijs2y7l3vjg"]
 
 [ext_resource type="PackedScene" uid="uid://cj1nptspt5q4w" path="res://Characters/angler_fish.tscn" id="1_61sog"]
+[ext_resource type="PackedScene" uid="uid://dau8g3h2llrw0" path="res://Art/Shaders/water_wave_shader.tscn" id="1_r3ymx"]
 [ext_resource type="PackedScene" uid="uid://ck4tc0l1gf463" path="res://Characters/player_blowfish.tscn" id="2_adlbc"]
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="3_lnh6q"]
 [ext_resource type="PackedScene" uid="uid://cexfsplmdf100" path="res://Environement/trash_01.tscn" id="4_v6sld"]
@@ -18,6 +19,8 @@ polygon = PackedVector2Array(-91, 118, 28, 119, 27, 0, -91, 0)
 size = Vector2(122, 120)
 
 [node name="AnglerFishGym" type="Node2D"]
+
+[node name="Water Wave Shader" parent="." instance=ExtResource("1_r3ymx")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(7, 19)

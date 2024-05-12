@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dau8g3h2llrw0"]
+
+[ext_resource type="Shader" path="res://Scripts/water.gdshader" id="1_g4ilq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qptps"]
+frequency = 0.0025
+offset = Vector3(-74.07, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_23x07"]
+seamless_blend_skirt = 0.0
+noise = SubResource("FastNoiseLite_qptps")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fakts"]
+shader = ExtResource("1_g4ilq")
+shader_parameter/strength = 5.0
+shader_parameter/uv_scaling = 1.0
+shader_parameter/movement_direction = Vector2(1, 0)
+shader_parameter/movement_speed = 0.07
+shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_23x07")
+
+[node name="Water Wave Shader" type="CanvasLayer"]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fakts")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

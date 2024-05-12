@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://0x0ecpbwempp"]
+
+[ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_7nm41"]
+[ext_resource type="Shader" path="res://Scripts/water.gdshader" id="1_olqkq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2k1gv"]
+frequency = 0.0025
+offset = Vector3(-74.07, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_won8u"]
+seamless_blend_skirt = 0.0
+noise = SubResource("FastNoiseLite_2k1gv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5xnb"]
+shader = ExtResource("1_olqkq")
+shader_parameter/strength = 5.0
+shader_parameter/uv_scaling = 1.0
+shader_parameter/movement_direction = Vector2(1, 0)
+shader_parameter/movement_speed = 0.07
+shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_won8u")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_w5xnb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(574, 326)
+scale = Vector2(8.875, 4.95313)
+texture = ExtResource("1_7nm41")
