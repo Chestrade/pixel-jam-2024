@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/pauseMenuManager.gd" id="1_65vgc"]
 [ext_resource type="PackedScene" uid="uid://c1qcpk5k1bscw" path="res://Scenes/UI/pause_menu.tscn" id="2_flmfg"]
-[ext_resource type="AudioStream" uid="uid://cbeuoy8p52glr" path="res://Audio/UnderWater_Amb.ogg" id="3_is4q5"]
+[ext_resource type="AudioStream" uid="uid://cbeuoy8p52glr" path="res://Audio/SFX/UnderWater_Amb.ogg" id="3_is4q5"]
 
 [node name="Main Level" type="Node2D"]
 
