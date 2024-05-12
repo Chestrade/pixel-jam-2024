@@ -15,10 +15,11 @@ var is_move_input_received: bool = true
 var is_sinking: bool = false
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var health : int = 100
+var health : int
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	health = 100
 
 func _physics_process(delta: float) -> void:
 	get_input()
@@ -100,7 +101,8 @@ func takeDamage(damage : int) -> void:
 	# print("Player health = " + str(health))
 	if health <= 0:
 		health = 0
-		# Load Game Over Screen
+		get_tree().change_scene_to_file("res://Scenes/game_over_scene.tscn")
+		
 
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true

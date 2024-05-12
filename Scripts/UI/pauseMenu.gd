@@ -1,11 +1,39 @@
-extends Node
+extends Control
 
 
-# Called when the node enters the scene tree for the first time.
+var isPaused : bool = false
+
+
 func _ready() -> void:
-	pass # Replace with function body.
+	hide()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("pause"):
+		if isPaused:
+			toggleMenu()
+		else:
+			toggleMenu()
+
+func toggleMenu() -> void:
+	if isPaused:
+		hide()
+		Engine.time_scale = 1
+	else:
+		show()
+		Engine.time_scale = 0
+
+	isPaused =!isPaused
+
+
+
+func _on_resume_pressed() -> void:
+	toggleMenu()
+
+func _on_exit_pressed() -> void: #Return to main menu
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+func _on_quit_game_pressed() -> void: # Quit to desktop
+	get_tree().quit
+
+
+

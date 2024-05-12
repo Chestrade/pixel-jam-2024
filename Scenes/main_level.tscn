@@ -1,18 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://btn64wqy1oa7q"]
+[gd_scene load_steps=5 format=3 uid="uid://btn64wqy1oa7q"]
 
-[ext_resource type="Script" path="res://Scripts/UI/pauseMenuManager.gd" id="1_65vgc"]
 [ext_resource type="PackedScene" uid="uid://c1qcpk5k1bscw" path="res://Scenes/UI/pause_menu.tscn" id="2_flmfg"]
 [ext_resource type="AudioStream" uid="uid://cbeuoy8p52glr" path="res://Audio/SFX/UnderWater_Amb.ogg" id="3_is4q5"]
+[ext_resource type="PackedScene" uid="uid://b6tb23xiiu2sq" path="res://Characters/wall_plant.tscn" id="3_socbm"]
+[ext_resource type="PackedScene" uid="uid://ck4tc0l1gf463" path="res://Characters/player_blowfish.tscn" id="4_cym5n"]
 
 [node name="Main Level" type="Node2D"]
 
-[node name="Pause Menu Manager" type="Node2D" parent="." node_paths=PackedStringArray("pauseMenu")]
-script = ExtResource("1_65vgc")
-pauseMenu = NodePath("../Pause Menu")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Pause Menu" parent="." instance=ExtResource("2_flmfg")]
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("2_flmfg")]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Audio" type="Node" parent="."]
+
+[node name="Level Amb" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("3_is4q5")
 autoplay = true
 attenuation = 1.41422
+
+[node name="Wall Plant" parent="." instance=ExtResource("3_socbm")]
+position = Vector2(1080, 286)
+rotation = -1.57745
+
+[node name="Player" parent="." instance=ExtResource("4_cym5n")]
+position = Vector2(518, 280)
