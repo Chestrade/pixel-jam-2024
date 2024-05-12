@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3ijs2y7l3vjg"]
+[gd_scene load_steps=10 format=3 uid="uid://b3ijs2y7l3vjg"]
 
 [ext_resource type="PackedScene" uid="uid://cj1nptspt5q4w" path="res://Characters/angler_fish.tscn" id="1_61sog"]
 [ext_resource type="PackedScene" uid="uid://ck4tc0l1gf463" path="res://Characters/player_blowfish.tscn" id="2_adlbc"]
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="3_lnh6q"]
 [ext_resource type="PackedScene" uid="uid://cexfsplmdf100" path="res://Environement/trash_01.tscn" id="4_v6sld"]
+[ext_resource type="PackedScene" uid="uid://c1qcpk5k1bscw" path="res://Scenes/UI/pause_menu.tscn" id="5_4kda1"]
+[ext_resource type="Script" path="res://Scripts/UI/pauseMenuManager.gd" id="6_hw4rj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oxeyj"]
 vertices = PackedVector2Array(540, 4, 1116, 20, 1134, 637, 552, 629, 289, 373, 287, 225, 12, 637, 136, 372, 33, 297, 139, 224, 33, 295, 17, 14)
@@ -38,8 +40,12 @@ position = Vector2(574, 326)
 position = Vector2(581, 428)
 wall_min_slide_angle = 3.14159
 markers = [NodePath("../Markers/Marker2D"), NodePath("../Markers/Marker2D2"), NodePath("../Markers/Marker2D3"), NodePath("../Markers/Marker2D4")]
+<<<<<<< Updated upstream
 healthColors = Array[Color]([])
 health = null
+=======
+health = 100.0
+>>>>>>> Stashed changes
 
 [node name="Player" parent="." instance=ExtResource("2_adlbc")]
 visibility_layer = 2
@@ -87,3 +93,9 @@ shape = SubResource("RectangleShape2D_7d5yn")
 
 [node name="trash_01" parent="." instance=ExtResource("4_v6sld")]
 position = Vector2(417, 289)
+
+[node name="Pause Menu" parent="." instance=ExtResource("5_4kda1")]
+
+[node name="Pause Menu Manager" type="Node" parent="." node_paths=PackedStringArray("pauseMenu")]
+script = ExtResource("6_hw4rj")
+pauseMenu = NodePath("../Pause Menu")
