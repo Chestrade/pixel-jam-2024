@@ -1,14 +1,24 @@
 extends CharacterBody2D
 @export_category("Movement")
+
+## The speed at which the Angler Fish will move while in the Wandering state.
 @export var wanderSpeed : float = 300
+
+## The speed at which the Angler Fish will move while in the Wandering state.
 @export var chaseSpeed : float = 400
+
+## Refer the Angler fish's navigation agent 2D node.
 @export var nav_agent : NavigationAgent2D
+
+## Points that the Angler fish will pick at random while in the Wandering State.
 @export var markers : Array[Marker2D] = []
 
 var speed : float = 300
 
 @export_category("Health")
+## The color of the lights that show the amount of health left.
 @export var  healthColors : Array[Color] = []
+## The angler's fish health
 @export_range(0, 100) var health
 
 # Head light settings
