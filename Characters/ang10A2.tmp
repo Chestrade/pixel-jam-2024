@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://cj1nptspt5q4w"]
+
+[ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
+[ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_r77o7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oq4ku"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xillh"]
+radius = 30.0167
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igk2u"]
+radius = 106.019
+
+[sub_resource type="Gradient" id="Gradient_gpshb"]
+offsets = PackedFloat32Array(0, 0.387755, 1)
+colors = PackedColorArray(1, 0.964706, 1, 1, 0.255659, 0.255659, 0.255659, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uqucl"]
+gradient = SubResource("Gradient_gpshb")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Angler Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_kr2uu")
+nav_agent = NodePath("Navigation/NavigationAgent2D")
+healthColors = Array[Color]([Color(0, 0.788235, 0.6, 1), Color(1, 0.966667, 0, 1), Color(0.94, 0.548333, 0, 1), Color(1, 0, 0, 1)])
+health = 99.92
+
+[node name="Sprite" type="Sprite2D" parent="."]
+light_mask = 0
+scale = Vector2(0.151858, 0.151858)
+texture = ExtResource("1_r77o7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oq4ku")
+
+[node name="AnglerFishAnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Agro Range" type="Node2D" parent="."]
+
+[node name="AgroRange" type="Area2D" parent="Agro Range"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/AgroRange"]
+visible = false
+shape = SubResource("CircleShape2D_xillh")
+debug_color = Color(1, 0.00518643, 0.0615661, 0.42)
+
+[node name="DeAgro Range" type="Area2D" parent="Agro Range"]
+scale = Vector2(1.02113, 1.07926)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/DeAgro Range"]
+visible = false
+shape = SubResource("CircleShape2D_igk2u")
+debug_color = Color(0.511034, 0.608367, 1, 0.42)
+
+[node name="Light" type="Node2D" parent="."]
+
+[node name="HeadLight" type="PointLight2D" parent="Light"]
+scale = Vector2(4.30062, 4.0345)
+energy = 8.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_uqucl")
+
+[node name="LightTimer" type="Timer" parent="Light"]
+wait_time = 0.1
+
+[connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Agro Range/AgroRange" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Agro Range/DeAgro Range" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Light/LightTimer" to="." method="_on_light_timer_timeout"]

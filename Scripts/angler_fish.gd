@@ -25,18 +25,23 @@ enum STATE {WANDERING, CHASE}
 var currentState : STATE
 
 func _ready() -> void:
-	health = 100
 	SetState(STATE.WANDERING)
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
+	
+	#Set health and light parameters
+	health = 100
+	headLight.set_color(healthColors[0]) 
+	maxFlickerAmount = 10
 	lightTimer.start()
 
 func _process(delta: float) -> void:
 	StateUpdate()
-	if Input.is_key_pressed(KEY_J): # Temporary shit for testing
+	
+	# Temporary shit for testing
+	if Input.is_key_pressed(KEY_J): 
 		setHealth(10)
 		print(health)
-	
 
 func setHealth(damage : int):
 	health -= damage
@@ -97,6 +102,7 @@ func recalc_path() -> void:
 	elif currentState == STATE.WANDERING:
 		nav_agent.target_position = markers[currentMarkerIndex].global_position
 
+# Signals
 
 func _on_timer_timeout() -> void:
 	recalc_path()
