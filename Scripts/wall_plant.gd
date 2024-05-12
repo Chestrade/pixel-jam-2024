@@ -4,6 +4,7 @@ extends Node2D
 @export var main : Node
 
 @export var defaultLookAtPosition : Node
+@export var projectileSpawnPosition : Marker2D
 
 @onready var projectile = load("res://Characters/projectile.tscn")
 
@@ -25,7 +26,7 @@ func _physics_process(delta: float) -> void:
 func Shoot() -> void:
 	var instance = projectile.instantiate()
 	instance.dir = rotation
-	instance.spawnPosition = global_position
+	instance.spawnPosition = projectileSpawnPosition.global_position
 	instance.spawnRotation = rotation
 	main.add_child.call_deferred(instance)
 
