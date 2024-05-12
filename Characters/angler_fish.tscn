@@ -1,15 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
-[ext_resource type="Texture2D" uid="uid://cu6xow2dlc7jf" path="res://Art/anglerfish.png" id="2_k8vfb"]
+[ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_r77o7"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72r7d"]
-radius = 27.7574
-height = 67.5414
+[sub_resource type="CircleShape2D" id="CircleShape2D_oq4ku"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykj82"]
-radius = 3.9829
-height = 12.1334
+[sub_resource type="CircleShape2D" id="CircleShape2D_xillh"]
+radius = 30.0167
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igk2u"]
+radius = 106.019
 
 [sub_resource type="Gradient" id="Gradient_gpshb"]
 offsets = PackedFloat32Array(0, 0.387755, 1)
@@ -22,13 +22,11 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xillh"]
-radius = 127.865
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_igk2u"]
-radius = 189.108
+[sub_resource type="CircleShape2D" id="CircleShape2D_a1d40"]
+radius = 17.0
 
 [node name="Angler Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "markers")]
+collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_kr2uu")
@@ -38,13 +36,11 @@ healthColors = Array[Color]([Color(0, 0.920814, 0.539955, 1), Color(0.917647, 0.
 
 [node name="Sprite" type="Sprite2D" parent="."]
 light_mask = 0
-texture = ExtResource("2_k8vfb")
+scale = Vector2(0.151858, 0.151858)
+texture = ExtResource("1_r77o7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.09476, 5.03968)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_72r7d")
-debug_color = Color(0.556709, 0.226465, 0.229086, 0.42)
+shape = SubResource("CircleShape2D_oq4ku")
 
 [node name="AnglerFishAnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -57,20 +53,29 @@ debug_enabled = true
 wait_time = 0.1
 autostart = true
 
-[node name="Trash Pickup" type="Node2D" parent="."]
+[node name="Agro Range" type="Node2D" parent="."]
 
-[node name="Trash Pickup Area" type="Area2D" parent="Trash Pickup"]
+[node name="AgroRange" type="Area2D" parent="Agro Range"]
+collision_layer = 4
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash Pickup/Trash Pickup Area"]
-position = Vector2(0, 1)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_ykj82")
-debug_color = Color(0, 0.643137, 0, 0.419608)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/AgroRange"]
+shape = SubResource("CircleShape2D_xillh")
+debug_color = Color(1, 0.00518643, 0.0615661, 0.42)
+
+[node name="DeAgro Range" type="Area2D" parent="Agro Range"]
+scale = Vector2(1.02113, 1.07926)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/DeAgro Range"]
+visible = false
+shape = SubResource("CircleShape2D_igk2u")
+debug_color = Color(0.511034, 0.608367, 1, 0.42)
 
 [node name="Light" type="Node2D" parent="."]
 
 [node name="HeadLight" type="PointLight2D" parent="Light"]
-position = Vector2(58.0574, 4.22655)
 scale = Vector2(4.30062, 4.0345)
 energy = 8.0
 shadow_enabled = true
@@ -79,29 +84,17 @@ texture = SubResource("GradientTexture2D_uqucl")
 [node name="LightTimer" type="Timer" parent="Light"]
 wait_time = 0.1
 
-[node name="Agro Range" type="Node2D" parent="."]
+[node name="Trash Pickup" type="Node2D" parent="."]
 
-[node name="AgroRange" type="Area2D" parent="Agro Range"]
-collision_layer = 0
-collision_mask = 2
+[node name="Trash Pickup Area" type="Area2D" parent="Trash Pickup"]
+collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/AgroRange"]
-position = Vector2(58.141, 4.23253)
-shape = SubResource("CircleShape2D_xillh")
-debug_color = Color(1, 0.00518643, 0.0615661, 0.42)
-
-[node name="DeAgro Range" type="Area2D" parent="Agro Range"]
-scale = Vector2(1.02113, 1.07926)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/DeAgro Range"]
-position = Vector2(57.7097, 3.52738)
-shape = SubResource("CircleShape2D_igk2u")
-debug_color = Color(0.511034, 0.608367, 1, 0.42)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash Pickup/Trash Pickup Area"]
+shape = SubResource("CircleShape2D_a1d40")
+debug_color = Color(0, 0.643137, 0, 0.419608)
 
 [connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="Trash Pickup/Trash Pickup Area" to="." method="_on_trash_pickup_area_area_entered"]
-[connection signal="timeout" from="Light/LightTimer" to="." method="_on_light_timer_timeout"]
 [connection signal="area_entered" from="Agro Range/AgroRange" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Agro Range/DeAgro Range" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Light/LightTimer" to="." method="_on_light_timer_timeout"]
+[connection signal="area_entered" from="Trash Pickup/Trash Pickup Area" to="." method="_on_trash_pickup_area_area_entered"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-signal on_trash_dropped
+signal on_spikes_retracted
 
 @export var SWIM_SPEED: float = 300.0
 @export var DASH_SPEED: float = 1000.0
@@ -11,7 +11,6 @@ signal on_trash_dropped
 var screen_size
 var direction: Vector2
 var is_move_input_received: bool = true
-var is_trash_on_spikes: bool = false
 var is_sinking: bool = false
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -87,13 +86,11 @@ func get_input():
 		$AnimatedSprite2D.animation = "chonked"
 		$InflationCooldown.start()
 		chonkiness = 0.5
-		is_trash_on_spikes = true
 	elif Input.is_action_pressed("inflate") and $InflationCooldown.is_stopped():
 		$AnimatedSprite2D.animation = "default"
 		$InflationCooldown.start()
 		chonkiness = 1
-		is_trash_on_spikes = true
-		on_trash_dropped.emit()
+		on_spikes_retracted.emit()
 
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true

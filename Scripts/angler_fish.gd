@@ -118,12 +118,13 @@ func recalc_path() -> void:
 	elif currentState == STATE.WANDERING:
 		nav_agent.target_position = markers[currentMarkerIndex].global_position
 
-# Signals
+## Signals
 
 func _on_timer_timeout() -> void:
 	recalc_path()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("ya")
 	SetState(STATE.CHASE)
 	target_node = area.owner
 

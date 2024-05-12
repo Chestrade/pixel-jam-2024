@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ck4tc0l1gf463" path="res://Characters/player_blowfish.tscn" id="2_adlbc"]
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="3_lnh6q"]
 [ext_resource type="PackedScene" uid="uid://cexfsplmdf100" path="res://Environement/trash_01.tscn" id="4_v6sld"]
-[ext_resource type="PackedScene" uid="uid://c770qa1xyefvv" path="res://Characters/wall_plant.tscn" id="6_mai7c"]
+[ext_resource type="PackedScene" path="res://Characters/wall_plant.tscn" id="6_mai7c"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oxeyj"]
 vertices = PackedVector2Array(540, 4, 1116, 20, 1134, 637, 552, 629, 289, 373, 287, 225, 12, 637, 136, 372, 33, 297, 139, 224, 33, 295, 17, 14)
@@ -91,11 +91,11 @@ shape = SubResource("RectangleShape2D_7d5yn")
 [node name="trash_01" parent="." instance=ExtResource("4_v6sld")]
 position = Vector2(417, 289)
 
-[node name="Wall Plant" parent="." node_paths=PackedStringArray("main", "defaultLookAtPosition") instance=ExtResource("6_mai7c")]
+[node name="Wall Plant" parent="." instance=ExtResource("6_mai7c")]
 position = Vector2(1070, 69)
-main = NodePath("..")
-defaultLookAtPosition = NodePath("../Plant Look at position")
 
 [node name="Plant Look at position" type="Marker2D" parent="."]
 position = Vector2(923, 159)
 gizmo_extents = 129.2
+
+[connection signal="on_spikes_retracted" from="Player" to="trash_01" method="_on_player_on_spikes_retracted"]
