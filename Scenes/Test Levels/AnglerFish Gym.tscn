@@ -38,7 +38,8 @@ position = Vector2(574, 326)
 position = Vector2(581, 428)
 wall_min_slide_angle = 3.14159
 markers = [NodePath("../Markers/Marker2D"), NodePath("../Markers/Marker2D2"), NodePath("../Markers/Marker2D3"), NodePath("../Markers/Marker2D4")]
-health = 0.0
+healthColors = Array[Color]([])
+health = null
 
 [node name="Player" parent="." instance=ExtResource("2_adlbc")]
 visibility_layer = 2

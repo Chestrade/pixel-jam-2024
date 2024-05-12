@@ -27,14 +27,18 @@ func _physics_process(delta: float) -> void:
 			velocity.x = -DASH_SPEED
 		else:
 			velocity.x = DASH_SPEED
+	elif velocity.length() > SWIM_SPEED:
+		velocity *= inertia
 	# Walk if not dashing
 	elif velocity.length() <= SWIM_SPEED:
 		$AnimatedSprite2D.scale.x = 1
 		$AnimatedSprite2D.scale.y = 1
-		velocity = SWIM_SPEED * chonkiness * direction.normalized()
 	
 	# Slowly decrease velocity
-	velocity = velocity * inertia
+	if !is_move_input_received:
+		velocity *= inertia
+	elif velocity.length() <= SWIM_SPEED:
+		velocity = SWIM_SPEED * chonkiness * direction.normalized()
 	
 	if is_sinking:
 		velocity.y = gravity * delta
