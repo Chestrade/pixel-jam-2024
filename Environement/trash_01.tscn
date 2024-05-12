@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cexfsplmdf100"]
+[gd_scene load_steps=13 format=3 uid="uid://cexfsplmdf100"]
 
 [ext_resource type="Texture2D" uid="uid://bq7tij5akqa6d" path="res://Art/Trash/trash01.png" id="1_petr1"]
+[ext_resource type="Script" path="res://Scripts/trash_item.gd" id="1_x4v8f"]
 
 [sub_resource type="Gradient" id="Gradient_boiom"]
 interpolation_mode = 2
@@ -53,7 +54,11 @@ gradient = SubResource("Gradient_ftcna")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="trash_01" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xw73e"]
+radius = 3.0
+
+[node name="trash_01" type="Node2D" groups=["Trash"]]
+script = ExtResource("1_x4v8f")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
@@ -74,3 +79,11 @@ process_material = SubResource("ParticleProcessMaterial_bbip1")
 position = Vector2(-5.96046e-08, -2.5)
 scale = Vector2(0.125, 0.109375)
 texture = SubResource("GradientTexture2D_77nwg")
+
+[node name="Pickup Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Area"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_xw73e")
+
+[connection signal="body_entered" from="Pickup Area" to="." method="_on_pickup_area_body_entered"]
