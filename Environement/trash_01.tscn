@@ -82,6 +82,8 @@ scale = Vector2(0.125, 0.109375)
 texture = SubResource("GradientTexture2D_77nwg")
 
 [node name="Pickup Area" type="Area2D" parent="." groups=["Trash"]]
+collision_layer = 8
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Area"]
 position = Vector2(0, -2)

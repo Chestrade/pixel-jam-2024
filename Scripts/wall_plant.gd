@@ -21,26 +21,23 @@ func _physics_process(_delta: float) -> void:
 	else:
 		look_at(target.position)
 		rotate(PI/2)
-	
 
 func Shoot() -> void:
 	var instance = projectile.instantiate()
+	instance.look_at(target.position)
+	instance.spawnPosition = global_position
 	instance.dir = rotation
-	instance.spawnPosition = projectileSpawnPosition.global_position
-	instance.spawnRotation = rotation
-	main.add_child.call_deferred(instance)
+	get_parent().add_child.call_deferred(instance)
 
 func _on_player_detection_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		playerDetected = true
 		target = area.owner
-		
 
 func _on_player_detection_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		playerDetected = false
 		target = defaultLookAtPosition
-		
 	
 func _on_cooldown_timeout() -> void:
 	if playerDetected:

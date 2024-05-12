@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Player
 
 signal on_spikes_retracted
 

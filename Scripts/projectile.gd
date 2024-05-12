@@ -19,9 +19,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Detection Area"):
 		return
 	else:
-		print(body.name)
+		print(body.name, " was hit")
 		queue_free()
-
 
 func _on_life_timeout() -> void:
 	queue_free()
