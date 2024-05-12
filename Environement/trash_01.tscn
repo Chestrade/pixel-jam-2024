@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cexfsplmdf100"]
+[gd_scene load_steps=13 format=3 uid="uid://cexfsplmdf100"]
 
 [ext_resource type="Texture2D" uid="uid://bq7tij5akqa6d" path="res://Art/Trash/trash01.png" id="1_petr1"]
 [ext_resource type="Script" path="res://Scripts/trash_item.gd" id="1_x4v8f"]
-[ext_resource type="AudioStream" uid="uid://d37nv056iblxa" path="res://Audio/SFX/Trash_Glow_SFX.ogg" id="3_nu36d"]
 
 [sub_resource type="Gradient" id="Gradient_boiom"]
 interpolation_mode = 2
@@ -87,16 +86,4 @@ texture = SubResource("GradientTexture2D_77nwg")
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_xw73e")
 
-<<<<<<< HEAD
-[connection signal="area_entered" from="Pickup Area" to="." method="_on_pickup_area_area_entered"]
-=======
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_nu36d")
-autoplay = true
-stream_paused = true
-attenuation = 1.7411
-panning_strength = 4.3
-bus = &"SFX"
-
 [connection signal="body_entered" from="Pickup Area" to="." method="_on_pickup_area_body_entered"]
->>>>>>> fd6268a3f3dc99c89391d3392497579f9551da77
