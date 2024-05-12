@@ -11,7 +11,11 @@ var speed : float = 300
 @export var  healthColors : Array[Color] = []
 @export_range(0, 100) var health
 
-@onready var headLight : PointLight2D = $PointLight2D
+# Head light settings
+@onready var headLight : PointLight2D = $Light/HeadLight
+@onready var lightTimer : Timer = $Light/LightTimer
+var minFlickerAmount : float = 10
+var maxFlickerAmount : float = 20 # Interval in seconds
 var currentMarkerIndex = -1
 var isReachingTarget : bool = false
 
@@ -25,23 +29,35 @@ func _ready() -> void:
 	SetState(STATE.WANDERING)
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
+	lightTimer.start()
 
 func _process(delta: float) -> void:
 	StateUpdate()
-	HealthLightColor()
+	if Input.is_key_pressed(KEY_J): # Temporary shit for testing
+		setHealth(10)
+		print(health)
+	
 
-func HealthLightColor() -> void:
+func setHealth(damage : int):
+	health -= damage
 	if health >= 75:
 		headLight.set_color(healthColors[0]) 
+		maxFlickerAmount = 10
 	elif health <75 and health >= 50:
 		headLight.set_color(healthColors[1])
+		maxFlickerAmount = 12.5
 	elif health <50 and health >=25:
 		headLight.set_color(healthColors[2]) 
+		maxFlickerAmount = 17.5
 	elif health <25:
 		headLight.set_color(healthColors[3]) 
-
-func takeDammage(dammage : int):
-	health -= dammage
+		maxFlickerAmount = 23
+	
+	#Clamping health
+	if health > 100:
+		health = 100
+	if health < 0:
+		health = 0
 
 func StateUpdate() -> void:
 	match currentState:
@@ -81,6 +97,7 @@ func recalc_path() -> void:
 	elif currentState == STATE.WANDERING:
 		nav_agent.target_position = markers[currentMarkerIndex].global_position
 
+
 func _on_timer_timeout() -> void:
 	recalc_path()
 
@@ -92,3 +109,7 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.owner == target_node:
 		target_node = null
 	SetState(STATE.WANDERING)
+
+func _on_light_timer_timeout() -> void:
+	var flicker = randf_range(minFlickerAmount, maxFlickerAmount)
+	headLight.energy = flicker
