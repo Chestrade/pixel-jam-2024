@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cexfsplmdf100"]
+[gd_scene load_steps=14 format=3 uid="uid://cexfsplmdf100"]
 
 [ext_resource type="Texture2D" uid="uid://bq7tij5akqa6d" path="res://Art/Trash/trash01.png" id="1_petr1"]
 [ext_resource type="Script" path="res://Scripts/trash_item.gd" id="1_x4v8f"]
+[ext_resource type="AudioStream" uid="uid://d37nv056iblxa" path="res://Audio/SFX/Trash_Glow_SFX.ogg" id="3_b1e34"]
 
 [sub_resource type="Gradient" id="Gradient_boiom"]
 interpolation_mode = 2
@@ -85,5 +86,8 @@ texture = SubResource("GradientTexture2D_77nwg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Area"]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_xw73e")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_b1e34")
 
 [connection signal="body_entered" from="Pickup Area" to="." method="_on_pickup_area_body_entered"]
