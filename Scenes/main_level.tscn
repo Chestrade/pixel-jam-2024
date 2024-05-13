@@ -15,9 +15,9 @@ shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="Main Level" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+[node name="Vignette" type="ColorRect" parent="UI" node_paths=PackedStringArray("player")]
 material = SubResource("ShaderMaterial_noael")
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +27,7 @@ grow_vertical = 2
 script = ExtResource("2_q77pe")
 player = NodePath("../../Player")
 
-[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("2_flmfg")]
+[node name="Pause Menu" parent="UI" instance=ExtResource("2_flmfg")]
 
 [node name="Audio" type="Node" parent="."]
 

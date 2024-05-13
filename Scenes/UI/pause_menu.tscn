@@ -5,7 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnh1q"]
 shader = ExtResource("2_3p3m2")
-shader_parameter/lod = 0.466
+shader_parameter/lod = 2.288
 
 [sub_resource type="LabelSettings" id="LabelSettings_pna88"]
 font_size = 29
