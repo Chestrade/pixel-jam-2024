@@ -38,10 +38,10 @@ color = Color(0.0470588, 0.0470588, 0.12549, 0.8)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 326)
 
-[node name="Angler Fish" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("1_61sog")]
+[node name="Angler Fish" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_61sog")]
 position = Vector2(581, 428)
 wall_min_slide_angle = 3.14159
-markers = [NodePath("../Markers/Marker2D"), NodePath("../Markers/Marker2D2"), NodePath("../Markers/Marker2D3"), NodePath("../Markers/Marker2D4")]
+player = NodePath("../Player")
 health = 100.0
 
 [node name="Player" parent="." instance=ExtResource("2_adlbc")]

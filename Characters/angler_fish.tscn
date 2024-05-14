@@ -1,12 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj1nptspt5q4w"]
+[gd_scene load_steps=8 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_r77o7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oq4ku"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xillh"]
-radius = 30.0167
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igk2u"]
 radius = 106.019
@@ -25,13 +22,12 @@ fill_to = Vector2(1, 0.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_a1d40"]
 radius = 17.0
 
-[node name="Angler Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "markers")]
+[node name="Angler Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
 collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_kr2uu")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
-markers = [null, null, null, null]
 healthColors = Array[Color]([Color(0, 0.920814, 0.539955, 1), Color(0.917647, 0.917647, 0.203922, 1), Color(1, 0.47451, 0, 1), Color(1, 0, 0, 1)])
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -56,19 +52,11 @@ autostart = true
 [node name="Agro Range" type="Node2D" parent="."]
 
 [node name="AgroRange" type="Area2D" parent="Agro Range"]
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/AgroRange"]
-shape = SubResource("CircleShape2D_xillh")
-debug_color = Color(1, 0.00518643, 0.0615661, 0.42)
-
-[node name="DeAgro Range" type="Area2D" parent="Agro Range"]
 scale = Vector2(1.02113, 1.07926)
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/DeAgro Range"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/AgroRange"]
 visible = false
 shape = SubResource("CircleShape2D_igk2u")
 debug_color = Color(0.511034, 0.608367, 1, 0.42)
@@ -95,7 +83,7 @@ shape = SubResource("CircleShape2D_a1d40")
 debug_color = Color(0, 0.643137, 0, 0.419608)
 
 [connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="Agro Range/AgroRange" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Agro Range/DeAgro Range" to="." method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Agro Range/AgroRange" to="." method="_on_de_agro_range_area_entered"]
+[connection signal="area_exited" from="Agro Range/AgroRange" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="Light/LightTimer" to="." method="_on_light_timer_timeout"]
 [connection signal="area_entered" from="Trash Pickup/Trash Pickup Area" to="." method="_on_trash_pickup_area_area_entered"]

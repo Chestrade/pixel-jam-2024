@@ -2,16 +2,19 @@ extends CharacterBody2D
 @export_category("Movement")
 
 ## The speed at which the Angler Fish will move while in the Wandering state.
-@export var wanderSpeed : float = 300
+@export var wanderSpeed : float = 100
 
 ## The speed at which the Angler Fish will move while in the Wandering state.
-@export var chaseSpeed : float = 400
+@export var chaseSpeed : float = 250
 
 ## Refer the Angler fish's navigation agent 2D node.
 @export var nav_agent : NavigationAgent2D
 
+## Refer the player node
+@export var player : CharacterBody2D
+
 ## Points that the Angler fish will pick at random while in the Wandering State.
-@export var markers : Array[Marker2D] = []
+#@export var markers : Array[Marker2D] = []
 
 var speed : float = 300
 
@@ -39,6 +42,8 @@ func _ready() -> void:
 	SetState(STATE.WANDERING)
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
+	
+	target_node = player
 	
 	#Set health and light parameters
 	health = 100
@@ -78,17 +83,19 @@ func setHealth(damage : int):
 func StateUpdate() -> void:
 	match currentState:
 		STATE.WANDERING:
-			if isReachingTarget:
-				if nav_agent.is_navigation_finished():
-					isReachingTarget = false
-					currentMarkerIndex = randi_range(0,markers.size() -1)
-					nav_agent.target_position = markers[currentMarkerIndex].global_position
-					
-			else:
-				if nav_agent.is_navigation_finished():
-					isReachingTarget = true
-					nav_agent.target_position = markers[currentMarkerIndex].global_position
-					
+			nav_agent.target_position = target_node.global_position
+			#Old Wandering State Code with Waypoints
+			#if isReachingTarget:
+				#if nav_agent.is_navigation_finished():
+					#isReachingTarget = false
+					#currentMarkerIndex = randi_range(0,markers.size() -1)
+					#nav_agent.target_position = markers[currentMarkerIndex].global_position
+					#
+			#else:
+				#if nav_agent.is_navigation_finished():
+					#isReachingTarget = true
+					#nav_agent.target_position = markers[currentMarkerIndex].global_position
+				
 		STATE.CHASE:
 			nav_agent.target_position = target_node.global_position
 		STATE.EAT:
@@ -113,25 +120,22 @@ func SetState(newState : STATE) -> void:
 			speed = 10
 
 func recalc_path() -> void:
-	if target_node and currentState == STATE.CHASE:
-		nav_agent.target_position = target_node.global_position
-	elif currentState == STATE.WANDERING:
-		nav_agent.target_position = markers[currentMarkerIndex].global_position
+	nav_agent.target_position = target_node.global_position
+	
+	#if target_node and currentState == STATE.CHASE:
+		#nav_agent.target_position = target_node.global_position
+	#elif currentState == STATE.WANDERING:
+		#nav_agent.target_position = markers[currentMarkerIndex].global_position
 
 ## Signals
 
 func _on_timer_timeout() -> void:
-	recalc_path()
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("ya")
-	SetState(STATE.CHASE)
-	target_node = area.owner
+	recalc_path()	
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.owner == target_node:
-		target_node = null
-	SetState(STATE.WANDERING)
+		SetState(STATE.WANDERING)
+	
 
 func _on_light_timer_timeout() -> void:
 	var flicker = randf_range(minFlickerAmount, maxFlickerAmount)
@@ -143,3 +147,8 @@ func _on_trash_pickup_area_area_entered(area: Area2D) -> void:
 		print("Angler fish ate some trash.")
 		#trashTarget = area.node
 		#SetState(STATE.EAT)
+
+
+func _on_de_agro_range_area_entered(area: Area2D) -> void:
+	SetState(STATE.CHASE)
+	pass # Replace with function body.
