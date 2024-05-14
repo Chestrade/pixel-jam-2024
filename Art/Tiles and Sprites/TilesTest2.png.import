@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu6xow2dlc7jf"
-path="res://.godot/imported/anglerfish.png-c33353338cbd8854924c8f337e112c19.ctex"
+uid="uid://c7okigt5n3ylv"
+path="res://.godot/imported/TilesTest2.png-2438b4ef21a7998f08db5bde5ed68098.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/anglerfish.png"
-dest_files=["res://.godot/imported/anglerfish.png-c33353338cbd8854924c8f337e112c19.ctex"]
+source_file="res://Art/Tiles and Sprites/TilesTest2.png"
+dest_files=["res://.godot/imported/TilesTest2.png-2438b4ef21a7998f08db5bde5ed68098.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ukumuf5r04xv"
-path="res://.godot/imported/puffed_up_2.png-7a290e06f4df00b9e914ed769e8594b3.ctex"
+uid="uid://c4jfw30osa1hr"
+path="res://.godot/imported/angler.png-7ad4dea48c1c860b97bd8cb0759ee5a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/puffed_up_2.png"
-dest_files=["res://.godot/imported/puffed_up_2.png-7a290e06f4df00b9e914ed769e8594b3.ctex"]
+source_file="res://Art/Tiles and Sprites/angler.png"
+dest_files=["res://.godot/imported/angler.png-7ad4dea48c1c860b97bd8cb0759ee5a3.ctex"]
 
 [params]
 

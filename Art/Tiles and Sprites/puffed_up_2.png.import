@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4jfw30osa1hr"
-path="res://.godot/imported/blowfish.png-932e02ce9fefa70000e7be497643b906.ctex"
+uid="uid://ukumuf5r04xv"
+path="res://.godot/imported/puffed_up_2.png-6f9e840c10a1d40927c4369f85daa9c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/blowfish.png"
-dest_files=["res://.godot/imported/blowfish.png-932e02ce9fefa70000e7be497643b906.ctex"]
+source_file="res://Art/Tiles and Sprites/puffed_up_2.png"
+dest_files=["res://.godot/imported/puffed_up_2.png-6f9e840c10a1d40927c4369f85daa9c1.ctex"]
 
 [params]
 
