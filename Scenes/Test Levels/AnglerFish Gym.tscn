@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3ijs2y7l3vjg"]
+[gd_scene load_steps=11 format=3 uid="uid://b3ijs2y7l3vjg"]
 
 [ext_resource type="PackedScene" uid="uid://cj1nptspt5q4w" path="res://Characters/angler_fish.tscn" id="1_61sog"]
 [ext_resource type="PackedScene" uid="uid://dau8g3h2llrw0" path="res://Art/Shaders/water_wave_shader.tscn" id="1_r3ymx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="3_lnh6q"]
 [ext_resource type="PackedScene" uid="uid://cexfsplmdf100" path="res://Environement/trash_01.tscn" id="4_v6sld"]
 [ext_resource type="PackedScene" uid="uid://b6tb23xiiu2sq" path="res://Characters/wall_plant.tscn" id="6_mai7c"]
+[ext_resource type="PackedScene" uid="uid://dqxbtyo2ud4ab" path="res://Scenes/AudioManager.tscn" id="7_8nvlo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oxeyj"]
 vertices = PackedVector2Array(540, 4, 1116, 20, 1134, 637, 552, 629, 289, 373, 287, 225, 12, 637, 136, 372, 33, 297, 139, 224, 33, 295, 17, 14)
@@ -97,5 +98,9 @@ position = Vector2(1070, 69)
 [node name="Plant Look at position" type="Marker2D" parent="."]
 position = Vector2(923, 159)
 gizmo_extents = 129.2
+
+[node name="Audio Manager" parent="." node_paths=PackedStringArray("player", "anglerFish") instance=ExtResource("7_8nvlo")]
+player = NodePath("../Player")
+anglerFish = NodePath("../Angler Fish")
 
 [connection signal="on_spikes_retracted" from="Player" to="trash_01" method="_on_player_on_spikes_retracted"]

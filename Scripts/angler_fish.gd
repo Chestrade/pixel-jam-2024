@@ -1,8 +1,9 @@
 extends CharacterBody2D
+class_name AnglerFish
 @export_category("Movement")
 
 ## The speed at which the Angler Fish will move while in the Wandering state.
-@export var wanderSpeed : float = 100
+@export var wanderSpeed : float = 80
 
 ## The speed at which the Angler Fish will move while in the Wandering state.
 @export var chaseSpeed : float = 250

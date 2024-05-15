@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqxbtyo2ud4ab"]
+[gd_scene load_steps=5 format=3 uid="uid://dqxbtyo2ud4ab"]
 
+[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_gm5m5"]
 [ext_resource type="AudioStream" uid="uid://vx81mdu7caj7" path="res://Audio/Music/LevelMusic_Official_V1.ogg" id="1_rjq3o"]
 [ext_resource type="AudioStream" uid="uid://ctj3opcb4lida" path="res://Audio/Music/LevelMusic_FishWanderClose.ogg" id="2_nfdjt"]
 [ext_resource type="AudioStream" uid="uid://1yqlxbod2vr1" path="res://Audio/Music/LevelMusic_FishChase.ogg" id="3_2ngbj"]
 
 [node name="Audio Manager" type="Node"]
+script = ExtResource("1_gm5m5")
 
 [node name="Level Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_rjq3o")
@@ -13,12 +15,12 @@ bus = &"Level"
 
 [node name="Fish Close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nfdjt")
-volume_db = -6.659
+volume_db = -80.0
 autoplay = true
 bus = &"Fish Close"
 
 [node name="Fish Chasing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2ngbj")
-volume_db = 2.84
+volume_db = -80.0
 autoplay = true
 bus = &"Fish Chase"
