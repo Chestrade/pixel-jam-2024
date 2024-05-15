@@ -73,7 +73,7 @@ func set_music_volumes(closeVolume : float, chaseVolume: float) -> void:
 		var newVolumeChasing = lerp(startVolumeChase, targetChaseVolume, t)
 		fishChasingMusic.set_volume_db(newVolumeChasing)
 
-		await(get_tree().create_timer(0.1))  # Wait for a short interval
+		await(get_tree().create_timer(0.1).timeout)  # Wait for a short interval
 		elapsedTime += 0.1
 
 	# Ensure volume reaches exactly target volume at the end

@@ -11,16 +11,13 @@ script = ExtResource("1_gm5m5")
 [node name="Level Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_rjq3o")
 autoplay = true
-bus = &"Level"
 
 [node name="Fish Close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nfdjt")
 volume_db = -80.0
 autoplay = true
-bus = &"Fish Close"
 
 [node name="Fish Chasing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2ngbj")
 volume_db = -80.0
 autoplay = true
-bus = &"Fish Chase"
