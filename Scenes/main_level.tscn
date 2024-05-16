@@ -24,11 +24,6 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Main Level" type="Node2D"]
 
-[node name="Angler Fish Light Screen" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.0470588, 0.0470588, 0.12549, 0.8)
-
 [node name="Audio" type="Node" parent="."]
 
 [node name="Music Manager" parent="Audio" node_paths=PackedStringArray("player", "anglerFish") instance=ExtResource("1_dc4yx")]
@@ -40,10 +35,14 @@ stream = ExtResource("3_is4q5")
 autoplay = true
 attenuation = 1.41422
 
+[node name="Angler Fish Light Screen" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0470588, 0.0470588, 0.12549, 0.8)
+
 [node name="Water Wave Shader" parent="." instance=ExtResource("1_c1jb1")]
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Vignette" type="ColorRect" parent="UI" node_paths=PackedStringArray("player")]
 material = SubResource("ShaderMaterial_noael")
