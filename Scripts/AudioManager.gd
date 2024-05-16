@@ -34,9 +34,6 @@ func _process(delta: float) -> void:
 		SetDangerLevel(DangerLevel.MID)
 	elif enemyDistance > 500:
 		SetDangerLevel(DangerLevel.LOW)
-	
-	#print (fishCloseMusic.get_volume_db())
-	#print (fishChasingMusic.get_volume_db())
 
 func SetDangerLevel(new_dangerLevel : DangerLevel) -> void:
 	if currentDangerLevel == new_dangerLevel:
@@ -51,7 +48,7 @@ func EnterDangerLevel() -> void:
 		DangerLevel.MID:
 			set_music_volumes(0.0, -80.0)
 		DangerLevel.HIGH:
-			set_music_volumes(-80.0, 0.0)
+			set_music_volumes(0.0, 0.0)
 
 
 func set_music_volumes(closeVolume : float, chaseVolume: float) -> void:
@@ -65,7 +62,7 @@ func set_music_volumes(closeVolume : float, chaseVolume: float) -> void:
 	var elapsedTime = 0.0
 	while elapsedTime < musicTransitionTime:
 		var t = elapsedTime / musicTransitionTime
-		t = t * t * (3.0 - 2.0 * t)  # Cubic interpolation
+		#t = t * t * (3.0 - 2.0 * t)  # Cubic interpolation
 
 		var newVolumeClose = lerp(startVolumeClose, targetCloseVolume, t)
 		fishCloseMusic.set_volume_db(newVolumeClose)

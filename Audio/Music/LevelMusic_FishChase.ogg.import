@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://1yqlxbod2vr1"
+uid="uid://cy3wxxuxn3bbe"
 path="res://.godot/imported/LevelMusic_FishChase.ogg-eba458b3a3dc76bd6bdc51e5c427829a.oggvorbisstr"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/LevelMusic_FishChase.ogg-eba458b3a3dc76bd6bdc
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

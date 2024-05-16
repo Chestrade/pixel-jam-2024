@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_gm5m5"]
 [ext_resource type="AudioStream" uid="uid://vx81mdu7caj7" path="res://Audio/Music/LevelMusic_Official_V1.ogg" id="1_rjq3o"]
 [ext_resource type="AudioStream" uid="uid://ctj3opcb4lida" path="res://Audio/Music/LevelMusic_FishWanderClose.ogg" id="2_nfdjt"]
-[ext_resource type="AudioStream" uid="uid://1yqlxbod2vr1" path="res://Audio/Music/LevelMusic_FishChase.ogg" id="3_2ngbj"]
+[ext_resource type="AudioStream" uid="uid://cy3wxxuxn3bbe" path="res://Audio/Music/LevelMusic_FishChase.ogg" id="3_2ngbj"]
 
 [node name="Audio Manager" type="Node"]
 script = ExtResource("1_gm5m5")
@@ -21,3 +21,4 @@ autoplay = true
 stream = ExtResource("3_2ngbj")
 volume_db = -80.0
 autoplay = true
+stream_paused = true
