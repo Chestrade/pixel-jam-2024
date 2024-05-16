@@ -65,6 +65,10 @@ health = 0.0
 visibility_layer = 2
 position = Vector2(518, 280)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-518, -280)
+anchor_mode = 0
+
 [node name="Wall Plant" parent="." instance=ExtResource("3_socbm")]
 position = Vector2(1080, 286)
 rotation = -1.57745
