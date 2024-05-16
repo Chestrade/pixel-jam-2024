@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ck4tc0l1gf463"]
 
 [ext_resource type="Script" path="res://Scripts/player_blowfish.gd" id="1_654n7"]
-[ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/Tiles and Sprites/blowfish.png" id="2_kml3h"]
+[ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/Tiles and Sprites/angler.png" id="2_kml3h"]
 [ext_resource type="Texture2D" uid="uid://ukumuf5r04xv" path="res://Art/Tiles and Sprites/puffed_up_2.png" id="2_nuj23"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyglf"]

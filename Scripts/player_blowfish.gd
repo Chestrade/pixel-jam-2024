@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = -DASH_SPEED
 		else:
 			velocity.x = DASH_SPEED
+	# Decrease velocity when player is dashing
 	elif velocity.length() > SWIM_SPEED:
 		velocity *= inertia
 	# Walk if not dashing
