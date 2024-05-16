@@ -56,6 +56,7 @@ healthColors = Array[Color]([Color(0, 0.920814, 0.539955, 1), Color(0.917647, 0.
 
 [node name="Horror Sounds" type="AudioStreamPlayer2D" parent="Audio Streams"]
 stream = SubResource("AudioStreamRandomizer_ma3fo")
+volume_db = -16.192
 bus = &"SFX"
 
 [node name="Splash Sounds" type="AudioStreamPlayer2D" parent="Audio Streams"]
