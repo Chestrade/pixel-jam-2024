@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://btn64wqy1oa7q"]
+[gd_scene load_steps=12 format=3 uid="uid://btn64wqy1oa7q"]
 
+[ext_resource type="PackedScene" uid="uid://dau8g3h2llrw0" path="res://Art/Shaders/water_wave_shader.tscn" id="1_c1jb1"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/vignette.gdshader" id="1_cql6f"]
+[ext_resource type="PackedScene" uid="uid://dqxbtyo2ud4ab" path="res://Scenes/AudioManager.tscn" id="1_dc4yx"]
 [ext_resource type="PackedScene" uid="uid://c1qcpk5k1bscw" path="res://Scenes/UI/pause_menu.tscn" id="2_flmfg"]
 [ext_resource type="Script" path="res://Scripts/HealthVignette.gd" id="2_q77pe"]
 [ext_resource type="AudioStream" uid="uid://cbeuoy8p52glr" path="res://Audio/SFX/UnderWater_Amb.ogg" id="3_is4q5"]
 [ext_resource type="PackedScene" uid="uid://b6tb23xiiu2sq" path="res://Characters/wall_plant.tscn" id="3_socbm"]
 [ext_resource type="PackedScene" uid="uid://ck4tc0l1gf463" path="res://Characters/player_blowfish.tscn" id="4_cym5n"]
+[ext_resource type="PackedScene" uid="uid://cj1nptspt5q4w" path="res://Characters/angler_fish.tscn" id="8_gcq0m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_noael"]
 shader = ExtResource("1_cql6f")
@@ -13,9 +16,34 @@ shader_parameter/vignette_intensity = 2.0
 shader_parameter/vignette_opacity = 1.0
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6y743"]
+vertices = PackedVector2Array(1142, 636, 8, 633, 7, 122, 8, 7, 1142, 7)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-3, 122, -1, 643, 1152, 647, 1153, -2, -1, -3)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="Main Level" type="Node2D"]
 
+[node name="Angler Fish Light Screen" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0470588, 0.0470588, 0.12549, 0.8)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Music Manager" parent="Audio" node_paths=PackedStringArray("player", "anglerFish") instance=ExtResource("1_dc4yx")]
+player = NodePath("../../Player")
+anglerFish = NodePath("../../Angler Fish")
+
+[node name="Level Amb" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_is4q5")
+autoplay = true
+attenuation = 1.41422
+
+[node name="Water Wave Shader" parent="." instance=ExtResource("1_c1jb1")]
+
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Vignette" type="ColorRect" parent="UI" node_paths=PackedStringArray("player")]
 material = SubResource("ShaderMaterial_noael")
@@ -29,16 +57,18 @@ player = NodePath("../../Player")
 
 [node name="Pause Menu" parent="UI" instance=ExtResource("2_flmfg")]
 
-[node name="Audio" type="Node" parent="."]
+[node name="Angler Fish" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_gcq0m")]
+position = Vector2(145, 161)
+player = NodePath("../Player")
+health = 0.0
 
-[node name="Level Amb" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("3_is4q5")
-autoplay = true
-attenuation = 1.41422
+[node name="Player" parent="." instance=ExtResource("4_cym5n")]
+visibility_layer = 2
+position = Vector2(518, 280)
 
 [node name="Wall Plant" parent="." instance=ExtResource("3_socbm")]
 position = Vector2(1080, 286)
 rotation = -1.57745
 
-[node name="Player" parent="." instance=ExtResource("4_cym5n")]
-position = Vector2(518, 280)
+[node name="AnglerFish Nav Mesh" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_6y743")
