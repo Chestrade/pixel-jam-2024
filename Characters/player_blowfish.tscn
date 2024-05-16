@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ck4tc0l1gf463"]
+[gd_scene load_steps=12 format=3 uid="uid://ck4tc0l1gf463"]
 
 [ext_resource type="Script" path="res://Scripts/player_blowfish.gd" id="1_654n7"]
 [ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/Tiles and Sprites/blowfish.png" id="2_kml3h"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://b1j1gbdtkocpv" path="res://Audio/SFX/Water_Underwater_splash_02.ogg" id="5_r3m2q"]
 [ext_resource type="AudioStream" uid="uid://bq3ev6blchqi5" path="res://Audio/SFX/Water_Underwater_splash_03.ogg" id="6_jeu1x"]
 [ext_resource type="AudioStream" uid="uid://dvutvoyex3gve" path="res://Audio/SFX/Water_Underwater_splash_04.ogg" id="7_knawm"]
-[ext_resource type="AudioStream" uid="uid://wqqb7xpbd14x" path="res://Audio/SFX/Water_Underwater_splash_05.ogg" id="8_n06mf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyglf"]
 animations = [{
@@ -36,7 +35,7 @@ radius = 21.0
 height = 54.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ch80p"]
-streams_count = 5
+streams_count = 4
 stream_0/stream = ExtResource("4_hm0gf")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("5_r3m2q")
@@ -45,8 +44,6 @@ stream_2/stream = ExtResource("6_jeu1x")
 stream_2/weight = 1.0
 stream_3/stream = ExtResource("7_knawm")
 stream_3/weight = 1.0
-stream_4/stream = ExtResource("8_n06mf")
-stream_4/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 3

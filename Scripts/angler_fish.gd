@@ -33,6 +33,11 @@ var maxFlickerAmount : float = 20 # Interval in seconds
 var currentMarkerIndex = -1
 var isReachingTarget : bool = false
 
+
+# Audio Stuff
+@onready var horrorSounds : AudioStreamPlayer2D = $"Audio Streams/Horror Sounds"
+@onready var splashSounds : AudioStreamPlayer2D = $"Audio Streams/Splash Sounds"
+
 var target_node = null
 var trashTarget = null
 
@@ -117,6 +122,8 @@ func SetState(newState : STATE) -> void:
 			speed = wanderSpeed
 		STATE.CHASE:
 			speed = chaseSpeed
+			horrorSounds.play()
+			splashSounds.play()
 		STATE.EAT:
 			speed = 10
 

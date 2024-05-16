@@ -1,7 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj1nptspt5q4w"]
+[gd_scene load_steps=14 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_r77o7"]
+[ext_resource type="AudioStream" uid="uid://43kpflg8s2q" path="res://Audio/SFX/Horror_01.ogg" id="3_u1onr"]
+[ext_resource type="AudioStream" uid="uid://dotvd8qnw4tq2" path="res://Audio/SFX/Water_Underwater_Angler_01.ogg" id="4_2te46"]
+[ext_resource type="AudioStream" uid="uid://k2mcwfrwub7g" path="res://Audio/SFX/Horror_02.ogg" id="4_nd6ju"]
+[ext_resource type="AudioStream" uid="uid://setakoi0rpqa" path="res://Audio/SFX/Water_Underwater_Angler_02.ogg" id="5_j50rw"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ma3fo"]
+playback_mode = 1
+random_pitch = 1.28
+streams_count = 2
+stream_0/stream = ExtResource("3_u1onr")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_nd6ju")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dtcq2"]
+playback_mode = 1
+random_pitch = 1.18
+streams_count = 2
+stream_0/stream = ExtResource("4_2te46")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_j50rw")
+stream_1/weight = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oq4ku"]
 
@@ -29,6 +51,16 @@ motion_mode = 1
 script = ExtResource("1_kr2uu")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
 healthColors = Array[Color]([Color(0, 0.920814, 0.539955, 1), Color(0.917647, 0.917647, 0.203922, 1), Color(1, 0.47451, 0, 1), Color(1, 0, 0, 1)])
+
+[node name="Audio Streams" type="Node" parent="."]
+
+[node name="Horror Sounds" type="AudioStreamPlayer2D" parent="Audio Streams"]
+stream = SubResource("AudioStreamRandomizer_ma3fo")
+bus = &"SFX"
+
+[node name="Splash Sounds" type="AudioStreamPlayer2D" parent="Audio Streams"]
+stream = SubResource("AudioStreamRandomizer_dtcq2")
+volume_db = 9.596
 
 [node name="Sprite" type="Sprite2D" parent="."]
 light_mask = 0
