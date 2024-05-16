@@ -17,6 +17,9 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var health : int
 
+# Audio stuff
+@onready var splashSounds : AudioStreamPlayer2D = $"Splash Sounds"
+
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	health = 100
@@ -29,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		$DashCooldown.start()
 		$AnimatedSprite2D.scale.x = 1.2
 		$AnimatedSprite2D.scale.y = 0.8
+		splashSounds.play()
 		if $AnimatedSprite2D.is_flipped_h():
 			velocity.x = -DASH_SPEED
 		else:
