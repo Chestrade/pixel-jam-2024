@@ -32,6 +32,7 @@ var minFlickerAmount : float = 10
 var maxFlickerAmount : float = 20 # Interval in seconds
 var currentMarkerIndex = -1
 var isReachingTarget : bool = false
+var light_to_sprite_rel_pos_x : float
 
 
 # Audio Stuff
@@ -51,6 +52,8 @@ func _ready() -> void:
 	
 	target_node = player
 	
+	light_to_sprite_rel_pos_x = $Light/HeadLight.position.x - $AnimatedSprite2D.position.x
+	
 	#Set health and light parameters
 	health = 100
 	headLight.set_color(healthColors[0]) 
@@ -65,9 +68,13 @@ func _process(_delta: float) -> void:
 		setHealth(10)
 		print(health)
 	
-	# Flip sprite according to direction of movement
+	# Flip sprite and HeadLight according to direction of movement
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+		if $AnimatedSprite2D.is_flipped_h():
+			$Light/HeadLight.position.x = $AnimatedSprite2D.position.x - light_to_sprite_rel_pos_x
+		else:
+			$Light/HeadLight.position.x = $AnimatedSprite2D.position.x + light_to_sprite_rel_pos_x
 
 func setHealth(damage : int):
 	health -= damage
@@ -156,8 +163,9 @@ func _on_light_timer_timeout() -> void:
 
 func _on_trash_pickup_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Trash"):
-		area.get_parent().queue_free()
 		SetState(STATE.EAT)
+		area.get_parent().queue_free()
+		
 		await get_tree().create_timer(2).timeout
 		SetState(STATE.WANDERING)
 

@@ -111,5 +111,3 @@ func takeDamage(damage : int) -> void:
 
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true
-
-

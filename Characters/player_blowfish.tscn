@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ck4tc0l1gf463"]
+[gd_scene load_steps=14 format=3 uid="uid://ck4tc0l1gf463"]
 
 [ext_resource type="Script" path="res://Scripts/player_blowfish.gd" id="1_654n7"]
 [ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/Tiles and Sprites/blowfish.png" id="2_kml3h"]
@@ -46,6 +46,18 @@ stream_2/weight = 1.0
 stream_3/stream = ExtResource("7_knawm")
 stream_3/weight = 1.0
 
+[sub_resource type="Gradient" id="Gradient_je5f5"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_adhmc"]
+gradient = SubResource("Gradient_je5f5")
+width = 128
+height = 128
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 3
 collision_layer = 2
@@ -55,6 +67,8 @@ script = ExtResource("1_654n7")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 15
+visibility_layer = 15
 sprite_frames = SubResource("SpriteFrames_wyglf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -91,5 +105,12 @@ bus = &"Player"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 15
+range_item_cull_mask = 15
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_adhmc")
+texture_scale = 2.0
 
 [connection signal="timeout" from="SinkTimer" to="." method="_on_sink_timer_timeout"]
