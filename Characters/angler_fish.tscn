@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cj1nptspt5q4w"]
+[gd_scene load_steps=16 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_r77o7"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dotvd8qnw4tq2" path="res://Audio/SFX/Water_Underwater_Angler_01.ogg" id="4_2te46"]
 [ext_resource type="AudioStream" uid="uid://k2mcwfrwub7g" path="res://Audio/SFX/Horror_02.ogg" id="4_nd6ju"]
 [ext_resource type="AudioStream" uid="uid://setakoi0rpqa" path="res://Audio/SFX/Water_Underwater_Angler_02.ogg" id="5_j50rw"]
+[ext_resource type="PackedScene" uid="uid://beccm3f1kjqdl" path="res://Environement/Killzone.tscn" id="7_l1yl8"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ma3fo"]
 playback_mode = 1
@@ -43,6 +44,9 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a1d40"]
 radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_youwe"]
+radius = 11.0454
 
 [node name="Angler Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
 collision_layer = 4
@@ -114,6 +118,12 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trash Pickup/Trash Pickup Area"]
 shape = SubResource("CircleShape2D_a1d40")
 debug_color = Color(0, 0.643137, 0, 0.419608)
+
+[node name="Killzone" parent="." instance=ExtResource("7_l1yl8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("CircleShape2D_youwe")
+debug_color = Color(0.993136, 0, 0.242055, 0.42)
 
 [connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Agro Range/AgroRange" to="." method="_on_de_agro_range_area_entered"]

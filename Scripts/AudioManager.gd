@@ -24,7 +24,7 @@ func _ready() -> void:
 	SetDangerLevel(DangerLevel.LOW)
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#calculate distance between player and angler
 	enemyDistance = player.position.distance_to(anglerFish.position)
 	#print(enemyDistance)

@@ -2,25 +2,29 @@ extends Node2D
 
 ## The parent node of the bullets that this object will instantiate
 @export var main : Node
-
-@export var defaultLookAtPosition : Node
+@export var defaultLookAtPosition : Node2D
 @export var projectileSpawnPosition : Marker2D
 
 @onready var projectile = load("res://Characters/projectile.tscn")
 
-var target
+var ROT_SPEED : float = 0.1
+var defaultRotation : float
+var target : Node2D
+var target_next_position : Vector2
 
 var playerDetected : bool = false
 
 func _ready() -> void:
+	defaultRotation = rotation
 	target = defaultLookAtPosition
 
 func _physics_process(_delta: float) -> void:
 	if target == null:
 		return
 	else:
-		look_at(target.position)
-		rotate(PI/2)
+		target_next_position = target.position + 0.5 * target.velocity
+		rotation = lerp_angle(rotation, (target_next_position - position).angle() + PI/2, ROT_SPEED)
+		rotation = clamp(rotation,-PI/2 + defaultRotation, PI/2 + defaultRotation)
 
 func Shoot() -> void:
 	var instance = projectile.instantiate()

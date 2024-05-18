@@ -157,6 +157,6 @@ func _on_trash_pickup_area_area_entered(area: Area2D) -> void:
 		#SetState(STATE.EAT)
 
 
-func _on_de_agro_range_area_entered(area: Area2D) -> void:
+func _on_de_agro_range_area_entered(_area: Area2D) -> void:
 	SetState(STATE.CHASE)
 	pass # Replace with function body.

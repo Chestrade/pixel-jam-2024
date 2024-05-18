@@ -102,13 +102,15 @@ func get_input():
 		on_spikes_retracted.emit()
 
 func takeDamage(damage : int) -> void:
-	health -= damage
+	if $InvincibilityCooldown.is_stopped():
+		health -= damage
+		$InvincibilityCooldown.start()
 	# print("Player health = " + str(health))
 	if health <= 0:
 		health = 0
 		get_tree().change_scene_to_file("res://Scenes/game_over_scene.tscn")
-		
 
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true
+
 
