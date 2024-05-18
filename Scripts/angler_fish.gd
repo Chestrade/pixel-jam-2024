@@ -64,6 +64,10 @@ func _process(_delta: float) -> void:
 	if Input.is_key_pressed(KEY_J): 
 		setHealth(10)
 		print(health)
+	
+	# Flip sprite according to direction of movement
+	if velocity.x != 0:
+		$AnimatedSprite2D.flip_h = velocity.x < 0
 
 func setHealth(damage : int):
 	health -= damage
@@ -152,11 +156,10 @@ func _on_light_timer_timeout() -> void:
 
 func _on_trash_pickup_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Trash"):
-		print("Angler fish ate some trash.")
-		#trashTarget = area.node
-		#SetState(STATE.EAT)
-
+		area.get_parent().queue_free()
+		SetState(STATE.EAT)
+		await get_tree().create_timer(2).timeout
+		SetState(STATE.WANDERING)
 
 func _on_de_agro_range_area_entered(_area: Area2D) -> void:
 	SetState(STATE.CHASE)
-	pass # Replace with function body.

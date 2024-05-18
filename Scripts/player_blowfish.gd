@@ -66,8 +66,7 @@ func _physics_process(delta: float) -> void:
 func get_input():
 	direction = Vector2.ZERO
 	# Calculate movement vector
-	if Input.is_action_pressed("swim_right"):
-		direction.x = 1
+	if Input.is_action_pressed("swim_right"):		direction.x = 1
 	if Input.is_action_pressed("swim_left"):
 		direction.x = -1
 	if Input.is_action_pressed("swim_down"):

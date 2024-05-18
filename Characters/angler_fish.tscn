@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cj1nptspt5q4w"]
+[gd_scene load_steps=17 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
-[ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_r77o7"]
 [ext_resource type="AudioStream" uid="uid://43kpflg8s2q" path="res://Audio/SFX/Horror_01.ogg" id="3_u1onr"]
 [ext_resource type="AudioStream" uid="uid://dotvd8qnw4tq2" path="res://Audio/SFX/Water_Underwater_Angler_01.ogg" id="4_2te46"]
 [ext_resource type="AudioStream" uid="uid://k2mcwfrwub7g" path="res://Audio/SFX/Horror_02.ogg" id="4_nd6ju"]
 [ext_resource type="AudioStream" uid="uid://setakoi0rpqa" path="res://Audio/SFX/Water_Underwater_Angler_02.ogg" id="5_j50rw"]
+[ext_resource type="Texture2D" uid="uid://cu6xow2dlc7jf" path="res://Art/Tiles and Sprites/anglerfish.png" id="6_57cvc"]
 [ext_resource type="PackedScene" uid="uid://beccm3f1kjqdl" path="res://Environement/Killzone.tscn" id="7_l1yl8"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ma3fo"]
@@ -26,7 +26,20 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("5_j50rw")
 stream_1/weight = 1.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oq4ku"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_uasyq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_57cvc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4a454"]
+radius = 26.0
+height = 92.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igk2u"]
 radius = 106.019
@@ -42,11 +55,12 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a1d40"]
-radius = 17.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vswt"]
+radius = 17.1172
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_youwe"]
-radius = 11.0454
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lm8ae"]
+radius = 24.0
+height = 98.0
 
 [node name="Angler Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
 collision_layer = 4
@@ -67,13 +81,15 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_dtcq2")
 volume_db = 9.596
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 0
-scale = Vector2(0.151858, 0.151858)
-texture = ExtResource("1_r77o7")
+sprite_frames = SubResource("SpriteFrames_uasyq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_oq4ku")
+visible = false
+position = Vector2(1, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4a454")
 
 [node name="AnglerFishAnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -94,7 +110,6 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Agro Range/AgroRange"]
-visible = false
 shape = SubResource("CircleShape2D_igk2u")
 debug_color = Color(0.511034, 0.608367, 1, 0.42)
 
@@ -116,13 +131,16 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trash Pickup/Trash Pickup Area"]
-shape = SubResource("CircleShape2D_a1d40")
+position = Vector2(30, 10)
+shape = SubResource("CircleShape2D_7vswt")
 debug_color = Color(0, 0.643137, 0, 0.419608)
 
 [node name="Killzone" parent="." instance=ExtResource("7_l1yl8")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-shape = SubResource("CircleShape2D_youwe")
+position = Vector2(-3, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lm8ae")
 debug_color = Color(0.993136, 0, 0.242055, 0.42)
 
 [connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]

@@ -8,7 +8,7 @@ var shader_value : float = 0.0
 func _ready() -> void:
 	shader_value = 0.0
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	playerHealth = float(player.health)
 	var invertedPlayerHealth : float = 100 - playerHealth
 	shader_value = lerp(shader_value, invertedPlayerHealth/100, speed)

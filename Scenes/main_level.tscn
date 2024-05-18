@@ -55,6 +55,7 @@ script = ExtResource("2_q77pe")
 player = NodePath("../../Player")
 
 [node name="Pause Menu" parent="UI" instance=ExtResource("2_flmfg")]
+visible = false
 
 [node name="Angler Fish" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_gcq0m")]
 position = Vector2(145, 161)
