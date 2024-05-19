@@ -1,10 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6tb23xiiu2sq"]
+[gd_scene load_steps=9 format=3 uid="uid://b6tb23xiiu2sq"]
 
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_ejaxc"]
 [ext_resource type="Script" path="res://Scripts/wall_plant.gd" id="1_rslq7"]
+[ext_resource type="AudioStream" uid="uid://dtek88bnbnmmp" path="res://Audio/SFX/spit.ogg" id="3_w3ihn"]
+[ext_resource type="AudioStream" uid="uid://tpnbovemy83g" path="res://Audio/SFX/grunt1.ogg" id="4_sw1f6"]
+[ext_resource type="AudioStream" uid="uid://bvf3r0nevb1da" path="res://Audio/SFX/grunt2.ogg" id="5_ue2yb"]
+[ext_resource type="AudioStream" uid="uid://clia5ry1wq2q3" path="res://Audio/SFX/grunt3.ogg" id="6_gyhhm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbyml"]
 radius = 169.003
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cg78g"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("4_sw1f6")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_ue2yb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_gyhhm")
+stream_2/weight = 1.0
 
 [node name="Wall Plant" type="Node2D"]
 script = ExtResource("1_rslq7")
@@ -27,8 +41,12 @@ autostart = true
 [node name="Audio" type="Node" parent="."]
 
 [node name="Plant Spit SFX" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_w3ihn")
+bus = &"SFX"
 
 [node name="Plant Grunt" type="AudioStreamPlayer2D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_cg78g")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Player Detection Area" to="." method="_on_player_detection_area_area_entered"]
 [connection signal="area_exited" from="Player Detection Area" to="." method="_on_player_detection_area_area_exited"]
