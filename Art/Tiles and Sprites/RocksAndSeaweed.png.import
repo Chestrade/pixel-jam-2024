@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxrmlulsg8lec"
-path="res://.godot/imported/TileMap2.png-2f19d016963dad98f5ef8c8b1cbe2f9a.ctex"
+uid="uid://b60csdus1jr5p"
+path="res://.godot/imported/RocksAndSeaweed.png-46b61628a3821441b803872efdd954c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tiles and Sprites/TileMap2.png"
-dest_files=["res://.godot/imported/TileMap2.png-2f19d016963dad98f5ef8c8b1cbe2f9a.ctex"]
+source_file="res://Art/Tiles and Sprites/RocksAndSeaweed.png"
+dest_files=["res://.godot/imported/RocksAndSeaweed.png-46b61628a3821441b803872efdd954c5.ctex"]
 
 [params]
 
