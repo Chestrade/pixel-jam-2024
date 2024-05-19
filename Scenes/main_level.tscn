@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btn64wqy1oa7q"]
+[gd_scene load_steps=14 format=3 uid="uid://btn64wqy1oa7q"]
 
 [ext_resource type="PackedScene" uid="uid://dau8g3h2llrw0" path="res://Art/Shaders/water_wave_shader.tscn" id="1_c1jb1"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/vignette.gdshader" id="1_cql6f"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b6tb23xiiu2sq" path="res://Characters/wall_plant.tscn" id="3_socbm"]
 [ext_resource type="PackedScene" uid="uid://ck4tc0l1gf463" path="res://Characters/player_blowfish.tscn" id="4_cym5n"]
 [ext_resource type="PackedScene" uid="uid://cj1nptspt5q4w" path="res://Characters/angler_fish.tscn" id="8_gcq0m"]
+[ext_resource type="PackedScene" uid="uid://owjknf6v06l" path="res://Environement/destructible_wall.tscn" id="10_egayu"]
+[ext_resource type="PackedScene" uid="uid://cexfsplmdf100" path="res://Environement/trash_01.tscn" id="11_3qqy2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_noael"]
 shader = ExtResource("1_cql6f")
@@ -80,3 +82,12 @@ rotation = -1.57745
 
 [node name="AnglerFish Nav Mesh" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_6y743")
+
+[node name="DestructibleWall" parent="." instance=ExtResource("10_egayu")]
+position = Vector2(62, 500)
+
+[node name="DestructibleWall2" parent="." instance=ExtResource("10_egayu")]
+position = Vector2(61, 318)
+
+[node name="trash_01" parent="." instance=ExtResource("11_3qqy2")]
+position = Vector2(91, 288)

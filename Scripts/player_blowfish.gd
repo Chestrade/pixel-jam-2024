@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-signal on_spikes_retracted
+signal on_spikes_retracted()
 
 @export var SWIM_SPEED: float = 300.0
 @export var DASH_SPEED: float = 1000.0

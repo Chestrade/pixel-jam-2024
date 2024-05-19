@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cexfsplmdf100"]
+[gd_scene load_steps=15 format=3 uid="uid://cexfsplmdf100"]
 
 [ext_resource type="Texture2D" uid="uid://bq7tij5akqa6d" path="res://Art/Trash/trash01.png" id="1_petr1"]
 [ext_resource type="Script" path="res://Scripts/trash_item.gd" id="1_x4v8f"]
@@ -13,6 +13,9 @@ colors = PackedColorArray(0, 0, 0, 0.580392, 0, 0, 0, 0)
 gradient = SubResource("Gradient_boiom")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6n0c8"]
+radius = 3.0
 
 [sub_resource type="Gradient" id="Gradient_1y2tt"]
 offsets = PackedFloat32Array(0, 0.509749, 1)
@@ -58,7 +61,12 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_xw73e"]
 radius = 3.0
 
-[node name="trash_01" type="Node2D" groups=["Trash"]]
+[node name="trash_01" type="RigidBody2D" groups=["Trash"]]
+position = Vector2(4, 6)
+collision_layer = 8
+collision_mask = 13
+gravity_scale = 0.0
+freeze_mode = 1
 script = ExtResource("1_x4v8f")
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -69,6 +77,12 @@ texture = SubResource("GradientTexture2D_277mt")
 [node name="Rock" type="Sprite2D" parent="."]
 position = Vector2(0, -3)
 texture = ExtResource("1_petr1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_6n0c8")
+debug_color = Color(0.621475, 0.344282, 5.77569e-07, 0.42)
 
 [node name="RadioActive Particles" type="GPUParticles2D" parent="."]
 position = Vector2(0, -1)
