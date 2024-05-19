@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx58wkhyi2l0"]
 
-[ext_resource type="TileSet" uid="uid://ch5it4xcsf8ha" path="res://Art/Tiles and Sprites/TileSet.tres" id="1_mcage"]
+[ext_resource type="TileSet" uid="uid://c57r28hir7cl8" path="res://Art/Tiles and Sprites/TileSet.tres" id="1_mcage"]
 [ext_resource type="TileSet" uid="uid://cr6dhcytc4d2o" path="res://Art/Tiles and Sprites/Environment32.tres" id="2_auape"]
 
 [node name="ArtStuffTest" type="Node2D"]
