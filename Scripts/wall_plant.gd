@@ -6,6 +6,8 @@ extends Node2D
 @export var projectileSpawnPosition : Marker2D
 
 @onready var projectile = load("res://Characters/projectile.tscn")
+@onready var shoot_sfx : AudioStreamPlayer2D = $"Audio/Plant Spit SFX"
+@onready var grunt_sfx : AudioStreamPlayer2D = $"Audio/Plant Grunt"
 
 var ROT_SPEED : float = 0.1
 var defaultRotation : float
@@ -32,11 +34,13 @@ func Shoot() -> void:
 	instance.spawnPosition = global_position
 	instance.dir = rotation
 	get_parent().add_child.call_deferred(instance)
+	shoot_sfx.play() # plays spitting sound
 
 func _on_player_detection_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		playerDetected = true
 		target = area.owner
+		grunt_sfx.play()
 
 func _on_player_detection_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player"):

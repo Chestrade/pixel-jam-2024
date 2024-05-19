@@ -24,6 +24,12 @@ debug_color = Color(0.621013, 0.527946, 0.228844, 0.42)
 [node name="Cooldown" type="Timer" parent="."]
 autostart = true
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="Plant Spit SFX" type="AudioStreamPlayer2D" parent="Audio"]
+
+[node name="Plant Grunt" type="AudioStreamPlayer2D" parent="Audio"]
+
 [connection signal="area_entered" from="Player Detection Area" to="." method="_on_player_detection_area_area_entered"]
 [connection signal="area_exited" from="Player Detection Area" to="." method="_on_player_detection_area_area_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
