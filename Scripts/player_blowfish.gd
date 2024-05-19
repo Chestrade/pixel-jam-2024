@@ -18,7 +18,8 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health : int
 
 # Audio stuff
-@onready var splashSounds : AudioStreamPlayer2D = $"Splash Sounds"
+@onready var splashSounds : AudioStreamPlayer2D = $"Node/Splash Sounds"
+@onready var inflateSounds : AudioStreamPlayer2D = $Node/Inflate
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -91,6 +92,7 @@ func get_input():
 		$AnimatedSprite2D.animation = "chonked"
 		$InflationCooldown.start()
 		chonkiness = 0.5
+		inflateSounds.play()
 	elif Input.is_action_pressed("inflate") and $InflationCooldown.is_stopped():
 		$AnimatedSprite2D.animation = "default"
 		$InflationCooldown.start()
