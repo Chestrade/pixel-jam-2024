@@ -1,0 +1,330 @@
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://cr6dhcytc4d2o"]
+
+[ext_resource type="Texture2D" uid="uid://71uyu7prfmdw" path="res://Art/Tiles and Sprites/SandAndSprites.png" id="1_n2qda"]
+[ext_resource type="Texture2D" uid="uid://defrdeu1m0jv2" path="res://Art/Tiles and Sprites/Rocks2AndDestructibles.png" id="2_kux1p"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4ljjp"]
+tile_data = PackedInt32Array(0, 393216, 6, 65536, 393216, 7, 1, 458752, 6, 65537, 458752, 7)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_6yca6"]
+tile_data = PackedInt32Array(0, 393216, 8, 65536, 393216, 9, 1, 458752, 8)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_10a7r"]
+tile_data = PackedInt32Array(0, 786432, 0, 65536, 786432, 1, 131072, 786432, 2, 196608, 786432, 3, 1, 851968, 0, 65537, 851968, 1, 131073, 851968, 2, 196609, 851968, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_hghhc"]
+tile_data = PackedInt32Array(0, 786432, 4, 65536, 786432, 5, 1, 851968, 4, 65537, 851968, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_7dlf6"]
+tile_data = PackedInt32Array(0, 262144, 7, 1, 327680, 7)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_pnw7y"]
+tile_data = PackedInt32Array(0, 917504, 2, 65536, 917504, 3, 131072, 917504, 4, 196608, 917504, 5, 1, 983040, 2, 65537, 983040, 3, 131073, 983040, 4, 196609, 983040, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_bfyl1"]
+tile_data = PackedInt32Array(0, 655360, 1, 1, 720896, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_5v85q"]
+tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_slw4c"]
+tile_data = PackedInt32Array(0, 524288, 9, 1, 589824, 9)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_wny1s"]
+tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 1, 131072, 1, 2, 196608, 1, 3, 1, 65537, 0, 65537, 65537, 1, 131073, 65537, 2, 196609, 65537, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_yc8m3"]
+tile_data = PackedInt32Array(0, 131073, 0, 65536, 131073, 1, 131072, 131073, 2, 196608, 131073, 3, 1, 196609, 0, 65537, 196609, 1, 131073, 196609, 2, 196609, 196609, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_wx8lf"]
+tile_data = PackedInt32Array(0, 917504, 0, 65536, 917504, 1, 1, 983040, 0, 65537, 983040, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_3n6wa"]
+tile_data = PackedInt32Array(65536, 0, 2, 131072, 0, 3, 196608, 0, 4, 262144, 0, 5, 1, 65536, 1, 65537, 65536, 2, 131073, 65536, 3, 196609, 65536, 4, 262145, 65536, 5, 2, 131072, 1, 65538, 131072, 2, 131074, 131072, 3, 196610, 131072, 4, 262146, 131072, 5, 3, 196608, 1, 65539, 196608, 2, 131075, 196608, 3, 196611, 196608, 4, 262147, 196608, 5, 4, 262144, 1, 65540, 262144, 2, 131076, 262144, 3, 196612, 262144, 4, 262148, 262144, 5, 65541, 327680, 2, 196613, 327680, 4, 262149, 327680, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_bspe6"]
+tile_data = PackedInt32Array(0, 393216, 0, 65536, 393216, 1, 1, 458752, 0, 65537, 458752, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_pcw65"]
+tile_data = PackedInt32Array(0, 393216, 2, 65536, 393216, 3, 1, 458752, 2, 65537, 458752, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_1wit3"]
+tile_data = PackedInt32Array(0, 393216, 5, 1, 458752, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_1jmwo"]
+tile_data = PackedInt32Array(0, 524288, 0, 65536, 524288, 1, 1, 589824, 0, 65537, 589824, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4e4u3"]
+tile_data = PackedInt32Array(0, 524288, 2, 65536, 524288, 3, 131072, 524288, 4, 196608, 524288, 5, 1, 589824, 2, 65537, 589824, 3, 131073, 589824, 4, 196609, 589824, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4pghg"]
+tile_data = PackedInt32Array(0, 655360, 2, 65536, 655360, 3, 131072, 655360, 4, 196608, 655360, 5, 1, 720896, 2, 65537, 720896, 3, 131073, 720896, 4, 196609, 720896, 5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfopw"]
+texture = ExtResource("1_n2qda")
+texture_region_size = Vector2i(32, 32)
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+14:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ip7ls"]
+texture = ExtResource("2_kux1p")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_gfopw")
+sources/1 = SubResource("TileSetAtlasSource_ip7ls")
+pattern_0 = SubResource("TileMapPattern_4ljjp")
+pattern_1 = SubResource("TileMapPattern_6yca6")
+pattern_2 = SubResource("TileMapPattern_wx8lf")
+pattern_3 = SubResource("TileMapPattern_3n6wa")
+pattern_4 = SubResource("TileMapPattern_bspe6")
+pattern_5 = SubResource("TileMapPattern_pcw65")
+pattern_6 = SubResource("TileMapPattern_1wit3")
+pattern_7 = SubResource("TileMapPattern_1jmwo")
+pattern_8 = SubResource("TileMapPattern_4e4u3")
+pattern_9 = SubResource("TileMapPattern_4pghg")
+pattern_10 = SubResource("TileMapPattern_10a7r")
+pattern_11 = SubResource("TileMapPattern_hghhc")
+pattern_12 = SubResource("TileMapPattern_7dlf6")
+pattern_13 = SubResource("TileMapPattern_pnw7y")
+pattern_14 = SubResource("TileMapPattern_bfyl1")
+pattern_15 = SubResource("TileMapPattern_5v85q")
+pattern_16 = SubResource("TileMapPattern_slw4c")
+pattern_17 = SubResource("TileMapPattern_wny1s")
+pattern_18 = SubResource("TileMapPattern_yc8m3")
