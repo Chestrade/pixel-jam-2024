@@ -58,9 +58,6 @@ func _physics_process(delta: float) -> void:
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	
-	# Prevent player from leaving screen
-	position = position.clamp(Vector2.ZERO, screen_size)
-	
 	move_and_slide()
 
 func get_input():

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cexfsplmdf100"]
 
-[ext_resource type="Texture2D" uid="uid://bq7tij5akqa6d" path="res://Art/Trash/trash01.png" id="1_petr1"]
 [ext_resource type="Script" path="res://Scripts/trash_item.gd" id="1_x4v8f"]
+[ext_resource type="Texture2D" uid="uid://bc2t7xet42jyd" path="res://Art/Trash/Trash1.png" id="2_sa0rf"]
 [ext_resource type="AudioStream" uid="uid://d37nv056iblxa" path="res://Audio/SFX/Trash_Glow_SFX.ogg" id="3_b1e34"]
 
 [sub_resource type="Gradient" id="Gradient_boiom"]
@@ -14,8 +14,8 @@ gradient = SubResource("Gradient_boiom")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6n0c8"]
-radius = 3.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ltn2x"]
+height = 30.0
 
 [sub_resource type="Gradient" id="Gradient_1y2tt"]
 offsets = PackedFloat32Array(0, 0.509749, 1)
@@ -58,16 +58,19 @@ gradient = SubResource("Gradient_ftcna")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xw73e"]
-radius = 3.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ml67e"]
+radius = 9.0
+height = 26.0
 
 [node name="trash_01" type="RigidBody2D" groups=["Trash"]]
+z_index = 4
 position = Vector2(4, 6)
 collision_layer = 8
 collision_mask = 13
-gravity_scale = 0.0
+gravity_scale = 0.1
 freeze_mode = 1
 script = ExtResource("1_x4v8f")
+trash_texture = ExtResource("2_sa0rf")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
@@ -76,23 +79,25 @@ texture = SubResource("GradientTexture2D_277mt")
 
 [node name="Rock" type="Sprite2D" parent="."]
 position = Vector2(0, -3)
-texture = ExtResource("1_petr1")
+texture = ExtResource("2_sa0rf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -4)
+rotation = 1.5708
 scale = Vector2(0.8, 0.8)
-shape = SubResource("CircleShape2D_6n0c8")
+shape = SubResource("CapsuleShape2D_ltn2x")
 debug_color = Color(0.621475, 0.344282, 5.77569e-07, 0.42)
 
 [node name="RadioActive Particles" type="GPUParticles2D" parent="."]
 position = Vector2(0, -1)
+scale = Vector2(2, 2)
 amount = 25
 amount_ratio = 0.4888
 process_material = SubResource("ParticleProcessMaterial_bbip1")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-5.96046e-08, -2.5)
-scale = Vector2(0.125, 0.109375)
+scale = Vector2(0.25, 0.218)
 texture = SubResource("GradientTexture2D_77nwg")
 
 [node name="Pickup Area" type="Area2D" parent="." groups=["Trash"]]
@@ -100,8 +105,9 @@ collision_layer = 8
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Area"]
-position = Vector2(0, -2)
-shape = SubResource("CircleShape2D_xw73e")
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ml67e")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_b1e34")

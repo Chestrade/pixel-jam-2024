@@ -38,6 +38,8 @@ autoplay = true
 attenuation = 1.41422
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+light_mask = 15
+visibility_layer = 15
 color = Color(0.196078, 0.196078, 0.392157, 1)
 
 [node name="Angler Fish Light Screen" type="ColorRect" parent="."]

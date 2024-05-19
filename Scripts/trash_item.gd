@@ -2,6 +2,8 @@ extends RigidBody2D
 
 signal on_trash_spikes_collision
 
+@export var trash_texture : CompressedTexture2D
+
 @onready var player_ref : Node = get_tree().get_nodes_in_group("Player")[0]
 
 var screen_size
@@ -15,8 +17,9 @@ var area_parent_anim : Node
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	player_ref.connect("on_spikes_retracted", _on_player_on_spikes_retracted)
+	$Rock.texture = trash_texture
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	if is_trash_on_spikes and area_parent.is_in_group("Player"):
 		# Ensure that trash flips when player is flipped
 		if area_parent_anim.is_flipped_h():
@@ -24,11 +27,6 @@ func _physics_process(delta) -> void:
 			position.x -= 2 * relative_position.x
 		else:
 			position = area_parent.position + relative_position
-	else:
-		position.y += gravity * delta
-	
-	# Prevent trash from exiting screen
-	position = position.clamp(Vector2.ZERO, screen_size)
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
