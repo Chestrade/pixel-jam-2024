@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://ch5it4xcsf8ha"]
+[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://c57r28hir7cl8"]
 
 [ext_resource type="Texture2D" uid="uid://defrdeu1m0jv2" path="res://Art/Tiles and Sprites/Rocks2AndDestructibles.png" id="1_saehv"]
 [ext_resource type="Texture2D" uid="uid://b7reohmbrl5ts" path="res://Art/Tiles and Sprites/RocksAndSeaweed.png" id="2_qdmtq"]
