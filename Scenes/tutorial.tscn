@@ -43,7 +43,6 @@ color = Color(0.0470588, 0.0470588, 0.129412, 0.686275)
 [node name="Water Wave Shader" parent="." instance=ExtResource("3_fv5ju")]
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Vignette" type="ColorRect" parent="UI" node_paths=PackedStringArray("player")]
 material = SubResource("ShaderMaterial_0wiwq")
