@@ -35,6 +35,8 @@ var isReachingTarget : bool = false
 var light_to_sprite_rel_pos_x : float
 var pickup_to_sprite_rel_pos_x : float
 
+# Animation
+@onready var _animated_sprite = $AnimatedSprite2D
 
 # Audio Stuff
 @onready var horrorSounds : AudioStreamPlayer2D = $"Audio Streams/Horror Sounds"
@@ -134,12 +136,15 @@ func SetState(newState : STATE) -> void:
 	match currentState:
 		STATE.WANDERING:
 			speed = wanderSpeed
+			_animated_sprite.play("default")
 		STATE.CHASE:
 			speed = chaseSpeed
 			horrorSounds.play()
 			splashSounds.play()
+			_animated_sprite.play("default")
 		STATE.EAT:
 			speed = 10
+			_animated_sprite.play("eating")
 
 func recalc_path() -> void:
 	nav_agent.target_position = target_node.global_position

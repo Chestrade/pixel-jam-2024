@@ -122,8 +122,6 @@ volume_db = 9.596
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 2
 sprite_frames = SubResource("SpriteFrames_uasyq")
-animation = &"eating"
-frame_progress = 0.893493
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 4)
