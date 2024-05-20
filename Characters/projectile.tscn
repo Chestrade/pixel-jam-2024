@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc0rkpe0u0r20"]
+[gd_scene load_steps=15 format=3 uid="uid://bc0rkpe0u0r20"]
 
 [ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_ow5dx"]
 [ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_wiwml"]
+[ext_resource type="PackedScene" uid="uid://ro8lxae0taoi" path="res://Scenes/bubbles.tscn" id="3_vtswu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mgagi"]
 
@@ -97,6 +98,8 @@ process_material = SubResource("ParticleProcessMaterial_53i0m")
 one_shot = true
 explosiveness = 0.8
 randomness = 0.55
+
+[node name="Bubbles" parent="." instance=ExtResource("3_vtswu")]
 
 [node name="Impact SFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_vw1ii")

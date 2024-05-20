@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cj1nptspt5q4w"]
+[gd_scene load_steps=18 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
+[ext_resource type="PackedScene" uid="uid://ro8lxae0taoi" path="res://Scenes/bubbles.tscn" id="2_05m6l"]
 [ext_resource type="AudioStream" uid="uid://43kpflg8s2q" path="res://Audio/SFX/Horror_01.ogg" id="3_u1onr"]
 [ext_resource type="AudioStream" uid="uid://dotvd8qnw4tq2" path="res://Audio/SFX/Water_Underwater_Angler_01.ogg" id="4_2te46"]
 [ext_resource type="AudioStream" uid="uid://k2mcwfrwub7g" path="res://Audio/SFX/Horror_02.ogg" id="4_nd6ju"]
@@ -69,6 +70,8 @@ motion_mode = 1
 script = ExtResource("1_kr2uu")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
 healthColors = Array[Color]([Color(0, 0.920814, 0.539955, 1), Color(0.917647, 0.917647, 0.203922, 1), Color(1, 0.47451, 0, 1), Color(1, 0, 0, 1)])
+
+[node name="Bubbles" parent="." instance=ExtResource("2_05m6l")]
 
 [node name="Audio Streams" type="Node" parent="."]
 

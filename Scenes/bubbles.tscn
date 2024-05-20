@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ro8lxae0taoi"]
+
+[ext_resource type="Texture2D" uid="uid://df51im6sbpyhw" path="res://Art/Tiles and Sprites/Environment elements/Bubble.png" id="1_llr4d"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lldbm"]
+lifetime_randomness = 0.41
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 34.89
+inherit_velocity_ratio = -0.2
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -40, 0)
+scale_min = 0.1
+anim_speed_max = 1.73
+turbulence_noise_strength = 11.19
+turbulence_noise_scale = 6.295
+turbulence_noise_speed_random = 4.0
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.0
+collision_mode = 2
+
+[node name="Bubbles" type="GPUParticles2D"]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_lldbm")
+texture = ExtResource("1_llr4d")
+lifetime = 5.0

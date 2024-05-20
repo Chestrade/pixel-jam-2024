@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ck4tc0l1gf463"]
+[gd_scene load_steps=16 format=3 uid="uid://ck4tc0l1gf463"]
 
 [ext_resource type="Script" path="res://Scripts/player_blowfish.gd" id="1_654n7"]
 [ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/Tiles and Sprites/blowfish.png" id="2_kml3h"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://b1j1gbdtkocpv" path="res://Audio/SFX/Water_Underwater_splash_02.ogg" id="5_r3m2q"]
 [ext_resource type="AudioStream" uid="uid://bq3ev6blchqi5" path="res://Audio/SFX/Water_Underwater_splash_03.ogg" id="6_jeu1x"]
 [ext_resource type="AudioStream" uid="uid://dvutvoyex3gve" path="res://Audio/SFX/Water_Underwater_splash_04.ogg" id="7_knawm"]
+[ext_resource type="PackedScene" uid="uid://ro8lxae0taoi" path="res://Scenes/bubbles.tscn" id="9_dd8cb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyglf"]
 animations = [{
@@ -73,6 +74,7 @@ visibility_layer = 15
 sprite_frames = SubResource("SpriteFrames_wyglf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(4, 0)
 shape = SubResource("CircleShape2D_5wixs")
 
@@ -92,6 +94,7 @@ one_shot = true
 one_shot = true
 
 [node name="Trash Pickup Area" type="Area2D" parent="." groups=["Player"]]
+visible = false
 collision_layer = 2
 collision_mask = 8
 
@@ -118,5 +121,7 @@ stream = ExtResource("4_fsfm3")
 stream = SubResource("AudioStreamRandomizer_ch80p")
 max_polyphony = 2
 bus = &"Player"
+
+[node name="Bubbles" parent="." instance=ExtResource("9_dd8cb")]
 
 [connection signal="timeout" from="SinkTimer" to="." method="_on_sink_timer_timeout"]
