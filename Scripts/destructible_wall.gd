@@ -3,8 +3,11 @@ extends StaticBody2D
 var health : int = 100
 var area_name : Area2D = null
 
+@onready var _animated_sprite = $AnimatedSprite2D
+
 func _ready() -> void:
 	pass
+	_animated_sprite.stop
 
 
 func _process(_delta: float) -> void:
@@ -19,6 +22,7 @@ func _process(_delta: float) -> void:
 func _on_damage_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Trash"):
 		area_name = area
+		_animated_sprite.play("default")
 
 
 func _on_damage_area_area_exited(area: Area2D) -> void:

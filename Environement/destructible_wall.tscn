@@ -1,13 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://owjknf6v06l"]
+[gd_scene load_steps=8 format=3 uid="uid://owjknf6v06l"]
 
 [ext_resource type="Script" path="res://Scripts/destructible_wall.gd" id="1_wilrf"]
 [ext_resource type="Texture2D" uid="uid://hhmjlv3ghl6l" path="res://Art/Tiles and Sprites/Environment elements/Destructible.png" id="2_7wgg5"]
+[ext_resource type="Texture2D" uid="uid://xdyh4gmpycgc" path="res://Art/Tiles and Sprites/Animation Sprites/Destructible2.png" id="3_f6dpr"]
+[ext_resource type="Texture2D" uid="uid://csh13kyetlq66" path="res://Art/Tiles and Sprites/Animation Sprites/Destructible3.png" id="4_3k54p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1m3q2"]
 size = Vector2(54, 124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n80j2"]
 size = Vector2(121, 148)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h16iy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7wgg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f6dpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3k54p")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="DestructibleWall" type="StaticBody2D"]
 collision_mask = 15
@@ -28,9 +47,9 @@ shape = SubResource("RectangleShape2D_n80j2")
 [node name="InvincibilityCooldown" type="Timer" parent="."]
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(32, 44)
-texture = ExtResource("2_7wgg5")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 46)
+sprite_frames = SubResource("SpriteFrames_h16iy")
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
 [connection signal="area_exited" from="DamageArea" to="." method="_on_damage_area_area_exited"]
