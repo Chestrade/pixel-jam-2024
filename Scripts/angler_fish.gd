@@ -68,12 +68,10 @@ func _process(_delta: float) -> void:
 	# Temporary shit for testing
 	if Input.is_key_pressed(KEY_J): 
 		setHealth(10)
-		print(health)
 	
 	# Flip sprite, HeadLight, and Trash Pickup according to direction of movement
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
-		print($AnimatedSprite2D.is_flipped_h())
 		if $AnimatedSprite2D.is_flipped_h():
 			$Light/HeadLight.position.x = $AnimatedSprite2D.position.x - light_to_sprite_rel_pos_x
 			$"Trash Pickup/Trash Pickup Area/CollisionShape2D".position.x = $AnimatedSprite2D.position.x - pickup_to_sprite_rel_pos_x
