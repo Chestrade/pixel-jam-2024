@@ -50,7 +50,7 @@ offset_left = -744.0
 offset_top = -252.0
 offset_right = 1856.0
 offset_bottom = 1243.0
-scale = Vector2(1.96, 2.12)
+scale = Vector2(1.96, 3.2)
 color = Color(0.0470588, 0.0470588, 0.12549, 0.8)
 
 [node name="Water Wave Shader" parent="." instance=ExtResource("1_c1jb1")]
@@ -89,7 +89,7 @@ position = Vector2(930, 275)
 rotation = 3.14159
 
 [node name="AnglerFish Nav Mesh" type="NavigationRegion2D" parent="."]
-scale = Vector2(2.30037, 3.18853)
+scale = Vector2(2.22037, 4.90853)
 navigation_polygon = SubResource("NavigationPolygon_6y743")
 
 [node name="DestructibleWall" parent="." instance=ExtResource("10_egayu")]
