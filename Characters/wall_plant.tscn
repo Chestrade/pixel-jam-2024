@@ -21,10 +21,11 @@ stream_2/stream = ExtResource("6_gyhhm")
 stream_2/weight = 1.0
 
 [node name="Wall Plant" type="Node2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_rslq7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-1.5, 13)
+position = Vector2(-1.78814e-07, -42)
 scale = Vector2(1.80597, 1.80597)
 texture = ExtResource("2_qxmmd")
 
@@ -33,6 +34,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detection Area"]
+visible = false
 position = Vector2(0, -100)
 shape = SubResource("CircleShape2D_pbyml")
 debug_color = Color(0.621013, 0.527946, 0.228844, 0.42)

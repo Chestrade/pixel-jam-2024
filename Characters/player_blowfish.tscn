@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bq3ev6blchqi5" path="res://Audio/SFX/Water_Underwater_splash_03.ogg" id="6_jeu1x"]
 [ext_resource type="Texture2D" uid="uid://dkgirf5arw1yw" path="res://Art/Tiles and Sprites/Animation Sprites/AnimPuff3.png" id="7_f62m8"]
 [ext_resource type="AudioStream" uid="uid://dvutvoyex3gve" path="res://Audio/SFX/Water_Underwater_splash_04.ogg" id="7_knawm"]
-[ext_resource type="PackedScene" uid="uid://ro8lxae0taoi" path="res://Scenes/bubbles.tscn" id="9_dd8cb"]
+[ext_resource type="PackedScene" path="res://Scenes/bubbles.tscn" id="9_dd8cb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyglf"]
 animations = [{

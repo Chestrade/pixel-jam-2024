@@ -31,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 func Shoot() -> void:
 	var instance = projectile.instantiate()
 	instance.look_at(target.position)
-	instance.spawnPosition = global_position
+	instance.spawnPosition = global_position + Vector2.UP.rotated(rotation) * 80
 	instance.dir = rotation
 	get_parent().add_child.call_deferred(instance)
 	shoot_sfx.play() # plays spitting sound
