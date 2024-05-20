@@ -19,7 +19,7 @@ var health : int
 
 # Audio stuff
 @onready var splashSounds : AudioStreamPlayer2D = $"Node/Splash Sounds"
-@onready var inflateSounds : AudioStreamPlayer2D = $Node/Inflate
+@onready var inflateSounds : AudioStreamPlayer = $"Node/Inflate"
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
