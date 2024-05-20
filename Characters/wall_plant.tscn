@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b6tb23xiiu2sq"]
 
-[ext_resource type="Texture2D" uid="uid://d0egbrasmuxvw" path="res://icon.svg" id="1_ejaxc"]
 [ext_resource type="Script" path="res://Scripts/wall_plant.gd" id="1_rslq7"]
+[ext_resource type="Texture2D" uid="uid://dn01yaavku6si" path="res://Art/Tiles and Sprites/Environment elements/WallPlant.png" id="2_qxmmd"]
 [ext_resource type="AudioStream" uid="uid://dtek88bnbnmmp" path="res://Audio/SFX/spit.ogg" id="3_w3ihn"]
 [ext_resource type="AudioStream" uid="uid://tpnbovemy83g" path="res://Audio/SFX/grunt1.ogg" id="4_sw1f6"]
 [ext_resource type="AudioStream" uid="uid://bvf3r0nevb1da" path="res://Audio/SFX/grunt2.ogg" id="5_ue2yb"]
@@ -24,7 +24,9 @@ stream_2/weight = 1.0
 script = ExtResource("1_rslq7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_ejaxc")
+position = Vector2(-1.5, 13)
+scale = Vector2(1.80597, 1.80597)
+texture = ExtResource("2_qxmmd")
 
 [node name="Player Detection Area" type="Area2D" parent="."]
 collision_layer = 4
