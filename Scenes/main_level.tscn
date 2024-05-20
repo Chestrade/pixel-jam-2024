@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://btn64wqy1oa7q"]
+[gd_scene load_steps=15 format=3 uid="uid://btn64wqy1oa7q"]
 
 [ext_resource type="PackedScene" uid="uid://dau8g3h2llrw0" path="res://Art/Shaders/water_wave_shader.tscn" id="1_c1jb1"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/vignette.gdshader" id="1_cql6f"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cj1nptspt5q4w" path="res://Characters/angler_fish.tscn" id="8_gcq0m"]
 [ext_resource type="PackedScene" uid="uid://owjknf6v06l" path="res://Environement/destructible_wall.tscn" id="10_egayu"]
 [ext_resource type="PackedScene" uid="uid://cexfsplmdf100" path="res://Environement/trash_01.tscn" id="11_3qqy2"]
+[ext_resource type="TileSet" uid="uid://c57r28hir7cl8" path="res://Art/Tiles and Sprites/TileSet.tres" id="12_gayty"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_noael"]
 shader = ExtResource("1_cql6f")
@@ -40,11 +41,13 @@ attenuation = 1.41422
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 light_mask = 15
 visibility_layer = 15
-color = Color(0.196078, 0.196078, 0.392157, 1)
+color = Color(0.248596, 0.249125, 0.482116, 1)
 
 [node name="Angler Fish Light Screen" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = -744.0
+offset_top = -252.0
+offset_right = 1856.0
+offset_bottom = 1243.0
 color = Color(0.0470588, 0.0470588, 0.12549, 0.8)
 
 [node name="Water Wave Shader" parent="." instance=ExtResource("1_c1jb1")]
@@ -93,3 +96,7 @@ position = Vector2(61, 318)
 
 [node name="trash_01" parent="." instance=ExtResource("11_3qqy2")]
 position = Vector2(91, 288)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("12_gayty")
+format = 2
