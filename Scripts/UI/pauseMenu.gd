@@ -33,7 +33,7 @@ func _on_exit_pressed() -> void: #Return to main menu
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func _on_quit_game_pressed() -> void: # Quit to desktop
-	get_tree().quit
+	get_tree().quit()
 
 
 

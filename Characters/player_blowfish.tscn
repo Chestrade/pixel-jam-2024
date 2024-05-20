@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bq3ev6blchqi5" path="res://Audio/SFX/Water_Underwater_splash_03.ogg" id="6_jeu1x"]
 [ext_resource type="Texture2D" uid="uid://dkgirf5arw1yw" path="res://Art/Tiles and Sprites/Animation Sprites/AnimPuff3.png" id="7_f62m8"]
 [ext_resource type="AudioStream" uid="uid://dvutvoyex3gve" path="res://Audio/SFX/Water_Underwater_splash_04.ogg" id="7_knawm"]
-[ext_resource type="PackedScene" path="res://Scenes/bubbles.tscn" id="9_dd8cb"]
+[ext_resource type="PackedScene" uid="uid://c8o341aijucrj" path="res://Scenes/bubbles.tscn" id="9_dd8cb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyglf"]
 animations = [{
@@ -78,6 +78,7 @@ stream_3/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 3
+position = Vector2(6, -2)
 collision_layer = 2
 collision_mask = 7
 motion_mode = 1
@@ -128,6 +129,9 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_adhmc")
 texture_scale = 2.0
 
+[node name="Bubbles" parent="." instance=ExtResource("9_dd8cb")]
+position = Vector2(3, -17)
+
 [node name="Node" type="Node" parent="."]
 
 [node name="Inflate" type="AudioStreamPlayer" parent="Node"]
@@ -137,7 +141,5 @@ stream = ExtResource("4_fsfm3")
 stream = SubResource("AudioStreamRandomizer_ch80p")
 max_polyphony = 2
 bus = &"Player"
-
-[node name="Bubbles" parent="." instance=ExtResource("9_dd8cb")]
 
 [connection signal="timeout" from="SinkTimer" to="." method="_on_sink_timer_timeout"]

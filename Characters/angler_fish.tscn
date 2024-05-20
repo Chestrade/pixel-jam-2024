@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
-[ext_resource type="PackedScene" path="res://Scenes/bubbles.tscn" id="2_05m6l"]
+[ext_resource type="PackedScene" uid="uid://c8o341aijucrj" path="res://Scenes/bubbles.tscn" id="2_05m6l"]
 [ext_resource type="AudioStream" uid="uid://43kpflg8s2q" path="res://Audio/SFX/Horror_01.ogg" id="3_u1onr"]
 [ext_resource type="AudioStream" uid="uid://dotvd8qnw4tq2" path="res://Audio/SFX/Water_Underwater_Angler_01.ogg" id="4_2te46"]
 [ext_resource type="AudioStream" uid="uid://k2mcwfrwub7g" path="res://Audio/SFX/Horror_02.ogg" id="4_nd6ju"]
