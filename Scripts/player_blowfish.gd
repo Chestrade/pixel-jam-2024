@@ -20,6 +20,7 @@ var health : int
 # Audio stuff
 @onready var splashSounds : AudioStreamPlayer2D = $"Node/Splash Sounds"
 @onready var inflateSounds : AudioStreamPlayer = $"Node/Inflate"
+@onready var _animated_sprite = $AnimatedSprite2D
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -78,6 +79,7 @@ func get_input():
 	   !Input.is_action_pressed("swim_left") and \
 	   !Input.is_action_pressed("swim_right"):
 		is_move_input_received = false
+		_animated_sprite.play("default")
 		
 		if $SinkTimer.is_stopped():
 			$SinkTimer.start()
@@ -90,6 +92,7 @@ func get_input():
 	if Input.is_action_pressed("inflate") and $AnimatedSprite2D.animation == "default" and \
 	   $InflationCooldown.is_stopped():
 		$AnimatedSprite2D.animation = "chonked"
+		_animated_sprite.play("chonked")
 		$InflationCooldown.start()
 		chonkiness = 0.5
 		inflateSounds.play()
@@ -110,3 +113,5 @@ func takeDamage(damage : int) -> void:
 
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true
+	
+

@@ -1,31 +1,48 @@
-[gd_scene load_steps=15 format=3 uid="uid://ck4tc0l1gf463"]
+[gd_scene load_steps=20 format=3 uid="uid://ck4tc0l1gf463"]
 
 [ext_resource type="Script" path="res://Scripts/player_blowfish.gd" id="1_654n7"]
+[ext_resource type="Texture2D" uid="uid://dp7876b0t2c1m" path="res://Art/Tiles and Sprites/Animation Sprites/Puffed1.png" id="2_b7d4x"]
 [ext_resource type="Texture2D" uid="uid://c4jfw30osa1hr" path="res://Art/Tiles and Sprites/blowfish.png" id="2_kml3h"]
-[ext_resource type="Texture2D" uid="uid://ukumuf5r04xv" path="res://Art/Tiles and Sprites/puffed_up_2.png" id="2_nuj23"]
+[ext_resource type="Texture2D" uid="uid://bra44wgsgm2na" path="res://Art/Tiles and Sprites/Animation Sprites/Puffed2.png" id="3_addix"]
 [ext_resource type="AudioStream" uid="uid://bami2vxpola25" path="res://Audio/SFX/inflate.ogg" id="4_fsfm3"]
 [ext_resource type="AudioStream" uid="uid://dq7725coclxi5" path="res://Audio/SFX/Water_Underwater_splash_01.ogg" id="4_hm0gf"]
 [ext_resource type="AudioStream" uid="uid://b1j1gbdtkocpv" path="res://Audio/SFX/Water_Underwater_splash_02.ogg" id="5_r3m2q"]
+[ext_resource type="Texture2D" uid="uid://djxukq0fv2rw0" path="res://Art/Tiles and Sprites/Animation Sprites/AnimPuff1.png" id="5_ryxrm"]
+[ext_resource type="Texture2D" uid="uid://lir31qyst3wb" path="res://Art/Tiles and Sprites/Animation Sprites/AnimPuff2.png" id="6_eva12"]
 [ext_resource type="AudioStream" uid="uid://bq3ev6blchqi5" path="res://Audio/SFX/Water_Underwater_splash_03.ogg" id="6_jeu1x"]
+[ext_resource type="Texture2D" uid="uid://dkgirf5arw1yw" path="res://Art/Tiles and Sprites/Animation Sprites/AnimPuff3.png" id="7_f62m8"]
 [ext_resource type="AudioStream" uid="uid://dvutvoyex3gve" path="res://Audio/SFX/Water_Underwater_splash_04.ogg" id="7_knawm"]
+[ext_resource type="PackedScene" uid="uid://ro8lxae0taoi" path="res://Scenes/bubbles.tscn" id="9_dd8cb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyglf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_nuj23")
+"texture": ExtResource("2_b7d4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_addix")
 }],
 "loop": true,
 "name": &"chonked",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_kml3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ryxrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eva12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f62m8")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wixs"]
@@ -36,7 +53,6 @@ radius = 21.0
 height = 54.0
 
 [sub_resource type="Gradient" id="Gradient_je5f5"]
-offsets = PackedFloat32Array(0.26506, 1)
 colors = PackedColorArray(0.588235, 0.588235, 0.588235, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_adhmc"]
@@ -61,7 +77,6 @@ stream_3/stream = ExtResource("7_knawm")
 stream_3/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-light_mask = 15
 z_index = 3
 collision_layer = 2
 collision_mask = 7
@@ -75,7 +90,7 @@ visibility_layer = 15
 sprite_frames = SubResource("SpriteFrames_wyglf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-modulate = Color(0.196078, 0.196078, 0.196078, 1)
+visible = false
 position = Vector2(4, 0)
 shape = SubResource("CircleShape2D_5wixs")
 
@@ -95,6 +110,7 @@ one_shot = true
 one_shot = true
 
 [node name="Trash Pickup Area" type="Area2D" parent="." groups=["Player"]]
+visible = false
 collision_layer = 2
 collision_mask = 8
 
@@ -106,7 +122,6 @@ debug_color = Color(0, 0.647427, 0.211338, 0.42)
 current = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-modulate = Color(0.392157, 0.392157, 0.392157, 1)
 light_mask = 15
 range_item_cull_mask = 15
 shadow_enabled = true
@@ -122,5 +137,7 @@ stream = ExtResource("4_fsfm3")
 stream = SubResource("AudioStreamRandomizer_ch80p")
 max_polyphony = 2
 bus = &"Player"
+
+[node name="Bubbles" parent="." instance=ExtResource("9_dd8cb")]
 
 [connection signal="timeout" from="SinkTimer" to="." method="_on_sink_timer_timeout"]
