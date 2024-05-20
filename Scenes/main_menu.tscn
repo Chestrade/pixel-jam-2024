@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwqmptqdprgok"]
+[gd_scene load_steps=8 format=3 uid="uid://dwqmptqdprgok"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_gtif1"]
+[ext_resource type="Texture2D" uid="uid://c1y65mfdm77rg" path="res://Art/UI/Scary.png" id="2_auo0v"]
 [ext_resource type="FontFile" uid="uid://diyedjq6uqki1" path="res://BLOODY.TTF" id="2_hdy7d"]
 [ext_resource type="AudioStream" uid="uid://cbcwo8axh3wc1" path="res://Audio/UI/ui_hover.ogg" id="2_rxh18"]
 [ext_resource type="AudioStream" uid="uid://dn0r53ndh5x00" path="res://Audio/UI/select.ogg" id="3_7lex0"]
@@ -19,6 +20,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gtif1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = -122.0
+offset_top = -305.0
+offset_right = 1278.0
+offset_bottom = 1095.0
+size_flags_vertical = 3
+texture = ExtResource("2_auo0v")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

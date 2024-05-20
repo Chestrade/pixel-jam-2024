@@ -23,6 +23,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_po6ki")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+metadata/_edit_use_anchors_ = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_tnh1q")
 layout_mode = 1
