@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cfnfom2oi0n37"]
+[gd_scene load_steps=15 format=3 uid="uid://cfnfom2oi0n37"]
 
 [ext_resource type="Script" path="res://Scripts/trash_item.gd" id="1_kn72k"]
-[ext_resource type="Texture2D" uid="uid://bc2t7xet42jyd" path="res://Art/Trash/Trash1.png" id="2_an52c"]
 [ext_resource type="Texture2D" uid="uid://dlu4ornhrxwo5" path="res://Art/Trash/Trash3.png" id="3_ffo02"]
 [ext_resource type="AudioStream" uid="uid://d37nv056iblxa" path="res://Audio/SFX/Trash_Glow_SFX.ogg" id="3_ql5hc"]
 
@@ -17,7 +16,6 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ltn2x"]
 radius = 7.5
-height = 30.0
 
 [sub_resource type="Gradient" id="Gradient_1y2tt"]
 offsets = PackedFloat32Array(0, 0.509749, 1)
@@ -72,7 +70,7 @@ collision_mask = 13
 gravity_scale = 0.1
 freeze_mode = 1
 script = ExtResource("1_kn72k")
-trash_texture = ExtResource("2_an52c")
+trash_texture = ExtResource("3_ffo02")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(1, 2)
