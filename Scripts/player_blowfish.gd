@@ -25,6 +25,8 @@ var health : int
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	health = 100
+	$AnimatedSprite2D.animation = "default"
+	_animated_sprite.play("default")
 
 func _physics_process(delta: float) -> void:
 	get_input()
@@ -79,7 +81,6 @@ func get_input():
 	   !Input.is_action_pressed("swim_left") and \
 	   !Input.is_action_pressed("swim_right"):
 		is_move_input_received = false
-		_animated_sprite.play("default")
 		
 		if $SinkTimer.is_stopped():
 			$SinkTimer.start()
@@ -114,4 +115,5 @@ func takeDamage(damage : int) -> void:
 func _on_sink_timer_timeout() -> void:
 	is_sinking = true
 	
+
 
