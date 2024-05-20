@@ -11,7 +11,7 @@ func play_pressed_sfx() -> void:
 
 func _on_play_pressed() -> void:
 	play_pressed_sfx()
-	get_tree().change_scene_to_file("res://Scenes/main_level.tscn")
+	get_tree().change_scene_to_file("res://Scenes/tutorial.tscn")
 	
 func _on_options_pressed() -> void:
 	play_pressed_sfx()

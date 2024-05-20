@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cj1nptspt5q4w"]
+[gd_scene load_steps=24 format=3 uid="uid://cj1nptspt5q4w"]
 
 [ext_resource type="Script" path="res://Scripts/angler_fish.gd" id="1_kr2uu"]
 [ext_resource type="PackedScene" uid="uid://ro8lxae0taoi" path="res://Scenes/bubbles.tscn" id="2_05m6l"]
@@ -8,6 +8,12 @@
 [ext_resource type="AudioStream" uid="uid://setakoi0rpqa" path="res://Audio/SFX/Water_Underwater_Angler_02.ogg" id="5_j50rw"]
 [ext_resource type="Texture2D" uid="uid://cu6xow2dlc7jf" path="res://Art/Tiles and Sprites/anglerfish.png" id="6_57cvc"]
 [ext_resource type="PackedScene" uid="uid://beccm3f1kjqdl" path="res://Environement/Killzone.tscn" id="7_l1yl8"]
+[ext_resource type="Texture2D" uid="uid://dowbfetu31hdq" path="res://Art/Tiles and Sprites/Animation Sprites/Angler1.png" id="8_esof3"]
+[ext_resource type="Texture2D" uid="uid://c08471t54rj8s" path="res://Art/Tiles and Sprites/Animation Sprites/Angler2.png" id="9_jrxis"]
+[ext_resource type="Texture2D" uid="uid://b6f5n0nxtcfk2" path="res://Art/Tiles and Sprites/Animation Sprites/Angler4.png" id="10_43dll"]
+[ext_resource type="Texture2D" uid="uid://chw1rls5bfyr6" path="res://Art/Tiles and Sprites/Animation Sprites/Angler5.png" id="11_uc62j"]
+[ext_resource type="Texture2D" uid="uid://c4tq4yxpu0jco" path="res://Art/Tiles and Sprites/Animation Sprites/AnglerEat1.png" id="12_u1lc2"]
+[ext_resource type="Texture2D" uid="uid://7bwxgcs0wt4o" path="res://Art/Tiles and Sprites/Animation Sprites/AnglerEat2.png" id="13_uisj8"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ma3fo"]
 playback_mode = 1
@@ -32,10 +38,39 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("6_57cvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_esof3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jrxis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_43dll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uc62j")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_u1lc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_uisj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_u1lc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_uisj8")
+}],
+"loop": true,
+"name": &"eating",
+"speed": 3.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4a454"]
@@ -87,6 +122,8 @@ volume_db = 9.596
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 2
 sprite_frames = SubResource("SpriteFrames_uasyq")
+animation = &"eating"
+frame_progress = 0.893493
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 4)
